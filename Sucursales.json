@@ -1,0 +1,38 @@
+[
+    {
+        "id_sucursal": "1",
+        "nombre": "sucursal Roosevelt",
+        "direccion": "Colonia Centro America, Calle Principal #6, San Miguel, San Miguel",
+        "num_empleados": "20"
+    },
+    {
+        "id_sucursal": "2",
+        "nombre": "sucursal Santa Rosa",
+        "direccion": "37 Avenida Norte y, Alameda Franklin Delano Roosevelt #114, San Salvador",
+        "num_empleados": "25"
+    },
+    {
+        "id_sucursal": "3",
+        "nombre": "sucursal Terminal",
+        "direccion": "Avenida Independencia Sur, Santa Ana",
+        "num_empleados": "24"
+    },
+    {
+        "id_sucursal": "4",
+        "nombre": "sucursal Sonsonate",
+        "direccion": "Calle a Tatopa, Sonsonate",
+        "num_empleados": "15"
+    },
+    {
+        "id_sucursal": "5",
+        "nombre": "sucursal la Paz",
+        "direccion": "Calle Doctor Miguel Tom\u00e1s Molina, Zacatecoluca",
+        "num_empleados": "23"
+    },
+    {
+        "id_sucursal": "6",
+        "nombre": "sucursalTest",
+        "direccion": "direccion de prueba",
+        "num_empleados": "21"
+    }
+]
