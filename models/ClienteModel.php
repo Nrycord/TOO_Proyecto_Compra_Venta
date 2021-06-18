@@ -11,7 +11,7 @@ class ClienteModel extends Database
     private $telefono;
     private $tipoCliente;
 
-    public function __construct($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)
+    public function __construct($idCliente = null, $nombre = null, $apellido = null, $direccion = null, $dui = null, $telefono = null, $tipoCliente = null)
     {
         parent::__construct();
         $this->setIdCliente($idCliente);
@@ -167,7 +167,7 @@ class ClienteModel extends Database
 
         $statement->bindValue(':' . C_ID, $id);
 
-        //"<h1>Cliente no encontrado!</h1>"
+        //"<h1>Registro no encontrado!</h1>"
         $message = false;
 
         if ($statement->execute()) {
