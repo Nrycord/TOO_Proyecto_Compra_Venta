@@ -15,11 +15,7 @@ class LoginController
                 $UsuarioActual = array(U_USUARIO => $_SESSION[U_USUARIO], U_ID_SUCURSAL => $_SESSION[U_ID_SUCURSAL]); //Los ponemos en un arreglo asociativo
                 $UsuarioActual = json_encode($UsuarioActual, JSON_PRETTY_PRINT);
                 file_put_contents("UsuarioActual.json", $UsuarioActual); //Anexamos esos valores a el documento .json
-<<<<<<< HEAD
                 header('Location: ' . BASE_DIR . 'Home/showHome'); //Redirigimos a Home
-=======
-                header('Location: ' . BASE_DIR . '/Home/showHome'); //Redirigimos a Home
->>>>>>> db8f27e22adb15905de7eef5f2419c01fc9471b0
             } else {
                 $loginErr = "Error con los datos ingresados"; //En caso que no se encontro el usuario/contrasenia muestra el error
             }
