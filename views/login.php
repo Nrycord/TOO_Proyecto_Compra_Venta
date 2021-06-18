@@ -12,22 +12,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/main.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/login.css">
-    <title>Maquila de Oriente</title>
+    <title>El Artesano</title>
 </head>
 
-<body class="align">
-    <main>
-        <div class="form">
-            <div class="thumbnail"><img src="<?= BASE_DIR; ?>assets/img/login.svg" /></div>
-            <form action="<?= BASE_DIR; ?>Login/login" method="POST" class="login-form">
-                <input type="text" name="<?= U_USUARIO ?>" placeholder="Usuario" required autocomplete="off">
-                <input type="password" name="<?= U_PASSWORD ?>" placeholder="Contraseña" required autocomplete="off">
-                <button>Acceder</button>
-            </form>
+<body class="m-0 px-3 vh-100 row justify-content-center align-items-center">
+    <!-- Form-->
+    <div class="form col-auto">
+        <div class="form-panel one">
+            <div class="form-header">
+                <h1>Iniciar Sesión</h1>
+            </div>
+            <div class="form-content">
+                <form action="<?= BASE_DIR; ?>Login/login" method="POST">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="<?= U_USUARIO; ?>" name="<?= U_USUARIO; ?>" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="<?= U_PASSWORD; ?>" name="<?= U_PASSWORD; ?>" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Acceder</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </main>
-</body>
+    </div>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="<?= BASE_DIR; ?>/assets/js/script.js"></script>
+</body>
 </html>
