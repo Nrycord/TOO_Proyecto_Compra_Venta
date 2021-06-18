@@ -30,8 +30,8 @@ if ($json != null) {
         <div class="col-md-5">
             <div class="square-service-block shadow">
                 <a href="#">
-                    <div class="ssb-icon"> <i class="fas fa-paste" aria-hidden="true"></i> </div>
-                    <h2 class="ssb-title"><strong>Presupuestos</strong></h2>
+                    <div class="ssb-icon"> <i class="fas fa-truck" aria-hidden="true"></i> </div>
+                    <h2 class="ssb-title"><strong>Proveedores</strong></h2>
                 </a>
             </div>
         </div>
