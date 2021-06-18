@@ -12,6 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -53,4 +54,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="<?= BASE_DIR; ?>/assets/js/script.js"></script>
 </body>
+=======
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/login.css">
+    <title>Maquila de Oriente</title>
+</head>
+
+<body class="align">
+    <main>
+        <div class="form">
+            <div class="thumbnail"><img src="<?= BASE_DIR; ?>assets/img/login.svg" /></div>
+            <form action="<?= BASE_DIR; ?>Login/login" method="POST" class="login-form">
+                <input type="text" name="<?= U_USUARIO ?>" placeholder="Usuario" required autocomplete="off">
+                <input type="password" name="<?= U_PASSWORD ?>" placeholder="Contraseña" required autocomplete="off">
+                <button>Acceder</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+>>>>>>> db8f27e22adb15905de7eef5f2419c01fc9471b0
 </html>
