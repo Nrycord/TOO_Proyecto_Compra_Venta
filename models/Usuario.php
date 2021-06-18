@@ -1,12 +1,13 @@
 <?php
 require_once "database/Database.php";
 
-class Usuario extends Database
+abstract class Usuario extends Database
 {
+    private $nombre;
+    private $apellido;
     private $usuario;
     private $pass;
-    private $id_sucursal;
-    private $rol;
+    private $tipoUsuario;
 
     public function __construct()
     {
@@ -20,7 +21,6 @@ class Usuario extends Database
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
-        return $this;
     }
 
     public function getPass()
@@ -30,54 +30,32 @@ class Usuario extends Database
     public function setPass($pass)
     {
         $this->pass = $pass;
-        return $this;
     }
 
-    public function getId_sucursal()
+    public function getTipoUsuario()
     {
-        return $this->id_sucursal;
+        return $this->tipoUsuario;
     }
-    public function setId_sucursal($id_sucursal)
+    public function setTipoUsuario($tipoUsuario)
     {
-        $this->id_sucursal = $id_sucursal;
-        return $this;
+        $this->tipoUsuario = $tipoUsuario;
     }
 
-    public function getRol()
+    public function getNombre()
     {
-        return $this->rol;
+        return $this->nombre;
     }
-    public function setRol($rol)
+    public function setNombre($nombre)
     {
-        $this->rol = $rol;
-        return $this;
+        $this->nombre = $nombre;
     }
 
-    public function save()
-    { //Guarda un usuario a la base de datos
-        $query = "INSERT INTO " . TBL_USUARIOS . " VALUES(:" . U_ID . ", :" . U_USUARIO . ", :" . U_PASSWORD . ", :" . U_ID_SUCURSAL . ", :" . U_ROL . ")";
-        $statement = $this->conn->prepare($query);
-
-        $statement->bindValue(':' . U_ID, NULL);
-        $statement->bindValue(':' . U_USUARIO, $this->getUsuario());
-        $statement->bindValue(':' . U_PASSWORD, $this->getPass());
-        $statement->bindValue(':' . U_ID_SUCURSAL, $this->getId_sucursal());
-        $statement->bindValue(':' . U_ROL, $this->getRol());
-
-        if ($statement->execute()) {
-            header('Location: ' . BASE_DIR . 'Home/showHome');
-        }
+    public function getApellido()
+    {
+        return $this->apellido;
     }
-
-    public function getAll()
-    { //Obtiene todos los usuarios
-        $query = "SELECT * FROM " . TBL_USUARIOS;
-        $statement = $this->conn->prepare($query);
-
-        $result = false;
-
-        if ($statement->execute())
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
     }
 }

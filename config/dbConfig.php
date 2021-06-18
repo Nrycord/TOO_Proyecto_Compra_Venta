@@ -21,9 +21,32 @@ define('C_TIPO', '');
 //Nombre de la tabla 2
 define('TBL_PRODUCTOS', '');
 //Campos de la tabla 2
-define('P_ID', '');
-define('P_NOMBRE', '');
-define('P_CANTIDAD', '');
-define('P_PRECIO', '');
-define('P_CATEGORIA', '');
-define('P_ID_PROV', '');
+define('PROD_ID', '');
+define('PROD_NOMBRE', '');
+define('PROD_CANTIDAD', '');
+define('PROD_PRECIO', '');
+define('PROD_CATEGORIA', '');
+define('PROD_ID_PROV', '');
+
+//Nombre de la tabla 3
+define('TBL_PROVEEDORES', '');
+//Campos de la tabla 3
+define('PROV_ID', '');
+define('PROV_NOMBRE', '');
+define('PROV_TEL', '');
+define('PROV_DIR', '');
+
+//Nombre de la tabla 4 y 5
+define('TBL_EMPLEADOS', '');
+define('EMP_ID', '');
+
+//Nombre de la tabla 5
+define('TBL_ADMIN', '');
+define('ADMIN_ID', '');
+
+//Campos de la tabla 4 y 5. Mutuos heredados de Usuario
+define('U_NOMBRE', '');
+define('U_APELLIDO', '');
+define('U_USER', '');
+define('U_PASS', '');
+define('U_TIPO', '');
