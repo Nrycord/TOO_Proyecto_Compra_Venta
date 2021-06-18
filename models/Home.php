@@ -4,14 +4,14 @@ class Home
 {
     public function showHomeAdmin()
     {
-        $homeDir = "homeA.php";
+        $homeDir = "homeAdmin.php";
         
         return $homeDir;
     }
 
     public function showHomeEmpleado()
     {
-        $homeDir = "homeB.php";
+        $homeDir = "homeEmployee.php";
         
         return $homeDir;
     }
