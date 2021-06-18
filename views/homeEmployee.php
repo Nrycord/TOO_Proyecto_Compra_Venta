@@ -35,7 +35,7 @@ if ($json != null) {
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
                             <a href="#">
-                                <div class="ssb-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                                <div class="ssb-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Nueva Venta</strong></h2>
                             </a>
                         </div>
@@ -44,7 +44,7 @@ if ($json != null) {
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
                             <a href="#">
-                                <div class="ssb-icon"> <i class="fas fa-truck" aria-hidden="true"></i> </div>
+                                <div class="ssb-icon"> <i class="fas fa-notes-medical" aria-hidden="true"></i> </div>
                                 <h2 class="ssb-title"><strong>Realizar Reporte</strong></h2>
                             </a>
                         </div>
@@ -53,7 +53,7 @@ if ($json != null) {
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
                             <a href="#">
-                                <div class="ssb-icon"><i class="fas fa-archive" aria-hidden="true"></i></div>
+                                <div class="ssb-icon"><i class="fas fa-file-invoice" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Consultar Reporte</strong></h2>
                             </a>
                         </div>
@@ -62,7 +62,7 @@ if ($json != null) {
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
                             <a href="#">
-                                <div class="ssb-icon"><i class="fas fa-file-medical-alt" aria-hidden="true"></i></div>
+                                <div class="ssb-icon"><i class="fas fa-id-badge" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Nuevo Cliente</strong></h2>
                             </a>
                         </div>
