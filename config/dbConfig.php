@@ -35,3 +35,18 @@ define('PROV_ID', '');
 define('PROV_NOMBRE', '');
 define('PROV_TEL', '');
 define('PROV_DIR', '');
+
+//Nombre de la tabla 4 y 5
+define('TBL_EMPLEADOS', '');
+define('EMP_ID', '');
+
+//Nombre de la tabla 5
+define('TBL_ADMIN', '');
+define('ADMIN_ID', '');
+
+//Campos de la tabla 4 y 5. Mutuos heredados de Usuario
+define('U_NOMBRE', '');
+define('U_APELLIDO', '');
+define('U_USER', '');
+define('U_PASS', '');
+define('U_TIPO', '');
