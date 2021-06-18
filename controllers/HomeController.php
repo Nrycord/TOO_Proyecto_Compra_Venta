@@ -1,14 +1,16 @@
 <?php
 
-class HomeController{
+class HomeController
+{
 
     public function __construct()
     {
         //Aqui requerimos el modelo
     }
-    
-    public function mostrarHomePage(){
-        
+
+    public function mostrarHomePage()
+    {
+
         //Agregar definicion
     }
 }
