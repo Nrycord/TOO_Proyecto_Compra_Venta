@@ -1,7 +1,6 @@
 <?php
     //Maneja la verificacion de si el usuario a iniciado sesion (creado una cookie)
     
-
     //Si la cookie existe
     if($_COOKIE["SessionId"]){
         //Reanudamos o iniciamos la sesion

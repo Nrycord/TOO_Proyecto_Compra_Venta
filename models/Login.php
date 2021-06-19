@@ -1,5 +1,7 @@
 <?php
 require_once "database/Database.php";
+require_once "models/AdministradorModel.php";
+require_once "models/EmpleadoModel.php";
 
 class Login extends Database
 {
@@ -37,55 +39,54 @@ class Login extends Database
 
     public function login()
     {
+        $empleado = new EmpleadoModel();
+        $admin = new AdministradorModel();
+
+        $resEmpleado = $empleado->obtenerUsuarioEmpleado($this->getUsuario(), $this->getPass());
+        $resAdmin = $admin->obtenerAdministrador($this->getUsuario(), $this->getPass());
         $result = false;
 
-        //La sentencia almacena un data en la bd de usuario que coincida el usuario ingresado
-        //SELECT U.id_usuario, U.username, U.password, U.id_sucursal, U.rol, S.nombre FROM `tbl_usuarios` AS U INNER JOIN `tbl_sucursal` AS S WHERE U.id_sucursal = S.id_sucursal
-        $query = "SELECT U.id_usuario, U.username, U.password, U.id_sucursal, U.rol, S.nombre FROM " . TBL_USUARIOS . " AS U INNER JOIN " . TBL_SUCURSAL . " AS S WHERE " . U_USUARIO . " = :" . U_USUARIO . " AND U." . U_ID_SUCURSAL . " = S." . S_ID;
-        $statement = $this->conn->prepare($query);
-
-        //Utilizamos el bindValue para evitar inyecciones de sql
-        $statement->bindValue(":" . U_USUARIO, $this->getUsuario());
-
         //Buscamos en la bd un usuario con el que coincida el usuario ingresado, si se encontro:
-        if ($statement->execute()) {
-            //Tomamos el numero de concidencias (numero de usuarios que encontro con el usuario ingresado)
-            $nRows = $statement->rowCount();
-            //Si se encontro solo un usuario continua con el proceso
-            if ($nRows == 1) {
-
-                //Tomamos ese usuario como un arreglo asociativo
-                $result = $statement->fetch(PDO::FETCH_ASSOC);
-
-                //una vez tenemos todos los datos de el usuario, comprobamos si su contraseña coincide
-                //var_dump($statement);
-                if ($this->getPass() == $result[U_PASSWORD]) {
-
-                    //Si la contraseña coincide, iniciamos la sesion
-                    session_start();
-
-                    //Agregamos a la sesion, valores que podemos llegar a utilizar más adelante
-                    $_SESSION[U_ID] = $result[U_ID];
-                    $_SESSION[U_USUARIO] = $result[U_USUARIO];
-                    $_SESSION[U_ID_SUCURSAL] = $result[U_ID_SUCURSAL];
-                    $_SESSION[S_NOMBRE_SUCURSAL] = $result[S_NOMBRE_SUCURSAL];
-
-                    //creamos una cookie
-                    setcookie("SessionId", true, strtotime('+1 day'), '/');
-                    setcookie("Rol", $result[U_ROL], strtotime('+1 day'), '/');
-                    //Retornamos los datos del usuario encontrado
-                    return $result;
-                } else { //En caso que las contraseñas no coincidan, retornara false
-                    $result = false;
-                }
-            } else { //En caso que no se encuentre ningun usario, o multiples usuarios con el mismo nombre (cosa que no pasaría por la configuracion de la bd)
-
-                $result = false;
-            }
-        } else { //En caso que ocurra un error en la ejecucion de la sentencia
-
-            $result = false;
+        if (isset($resAdmin)) {
+            $result = $this->logAdmin($resAdmin);
+        }elseif(isset($resEmpleado)){
+            $result = $this->logEmpleado($resEmpleado);
         }
+
         return $result; //Retornamos el false, en caso que no entre a alguna de las verificaciones
+    }
+
+    public function logAdmin($admin){
+        //Si la contraseña coincide, iniciamos la sesion
+        session_start();
+
+        //Agregamos a la sesion, valores que podemos llegar a utilizar más adelante
+        $_SESSION[ADMIN_ID] = $admin[ADMIN_ID];
+        $_SESSION[U_USER] = $admin[U_USER];
+        $_SESSION[U_NOMBRE] = $admin[U_NOMBRE];
+        $_SESSION[U_APELLIDO] = $admin[U_APELLIDO];
+
+        //creamos una cookie
+        setcookie("SessionId", true, strtotime('+1 day'), '/');
+        setcookie("Rol", $admin[U_TIPO], strtotime('+1 day'), '/');
+        //Retornamos los datos del usuario encontrado
+        return $admin;
+    }
+
+    public function logEmpleado($employee){
+        //Si la contraseña coincide, iniciamos la sesion
+        session_start();
+
+        //Agregamos a la sesion, valores que podemos llegar a utilizar más adelante
+        $_SESSION[EMP_ID] = $employee[ADMIN_ID];
+        $_SESSION[U_USER] = $employee[U_USER];
+        $_SESSION[U_NOMBRE] = $employee[U_NOMBRE];
+        $_SESSION[U_APELLIDO] = $employee[U_APELLIDO];
+
+        //creamos una cookie
+        setcookie("SessionId", true, strtotime('+1 day'), '/');
+        setcookie("Rol", $employee[U_TIPO], strtotime('+1 day'), '/');
+        //Retornamos los datos del usuario encontrado
+        return $employee;
     }
 }

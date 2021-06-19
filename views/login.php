@@ -2,7 +2,7 @@
     //Si la cookie existe
     if(isset($_COOKIE["SessionId"])){
         //Si tiene una sesion iniciada, entonces manda a Home
-        header('Location: '.BASE_DIR.'Home/showHome');
+        header('Location: '.BASE_DIR.'Home/mostrarHomePage');
     }
 ?>
 
@@ -31,11 +31,11 @@
                 <form action="<?= BASE_DIR; ?>Login/login" method="POST">
                     <div class="form-group">
                         <label for="username">Usuario</label>
-                        <input type="text" id="<?= U_USUARIO; ?>" name="<?= U_USUARIO; ?>" required="required"/>
+                        <input type="text" name="<?= U_USER; ?>" required="required"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña</label>
-                        <input type="password" id="<?= U_PASSWORD; ?>" name="<?= U_PASSWORD; ?>" required="required"/>
+                        <input type="password" name="<?= U_PASS; ?>" required="required"/>
                     </div>
                     <div class="form-group">
                         <button type="submit">Acceder</button>
