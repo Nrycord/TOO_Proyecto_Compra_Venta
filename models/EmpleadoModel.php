@@ -88,7 +88,8 @@ class EmpleadoModel extends Usuario
 
     public function obtenerUsuarioEmpleado($user, $pass)
     {
-        $query = "SELECT * FROM " . TBL_EMPLEADOS . " WHERE " . U_USER . " LIKE =:" . U_USER . " AND " . U_PASS . " LIKE =:" . U_PASS;
+        //SELECT * FROM tbl_empleados WHERE usuario LIKE "empleado" AND password LIKE "1234";
+        $query = "SELECT * FROM " . TBL_EMPLEADOS . " WHERE " . U_USER . " LIKE :" . U_USER . " AND " . U_PASS . " LIKE :" . U_PASS;
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . U_USER, $user);
