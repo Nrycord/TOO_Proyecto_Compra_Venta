@@ -24,7 +24,8 @@ class EmpleadoController
 
         $facturaModel = new FacturaModel();
         $productosJson = json_encode($this->productos);
-        return $facturaModel->generarFactura($_POST['fechaFacturacion'], $productosJson, $_POST["tipoFactura"]);
+        //return $facturaModel->generarFactura($_POST['fechaFacturacion'], $productosJson, $_POST["tipoFactura"]);
+        /* FALTA IMPLEMENTAR METODO CORRECTAMENTE CON AMBOS TIPO DE FACTURA */
     }
 
     public function registrarVenta()

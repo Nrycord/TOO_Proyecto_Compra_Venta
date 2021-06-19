@@ -8,9 +8,11 @@ class Login extends Database
     private $usuario;
     private $pass;
 
-    public function __construct()
+    public function __construct($usuario = null, $pass = null)
     {
         parent::__construct();
+        $this->setUsuario($usuario);
+        $this->setPass($pass);
     }
 
     public function getUsuario()
@@ -47,16 +49,17 @@ class Login extends Database
         $result = false;
 
         //Buscamos en la bd un usuario con el que coincida el usuario ingresado, si se encontro:
-        if (isset($resAdmin)) {
+        if (isset($resAdmin) && $resAdmin != false) {
             $result = $this->logAdmin($resAdmin);
-        }elseif(isset($resEmpleado)){
+        } elseif (isset($resEmpleado)  && $resEmpleado != false) {
             $result = $this->logEmpleado($resEmpleado);
         }
 
         return $result; //Retornamos el false, en caso que no entre a alguna de las verificaciones
     }
 
-    public function logAdmin($admin){
+    public function logAdmin($admin)
+    {
         //Si la contraseña coincide, iniciamos la sesion
         session_start();
 
@@ -68,12 +71,13 @@ class Login extends Database
 
         //creamos una cookie
         setcookie("SessionId", true, strtotime('+1 day'), '/');
-        setcookie("Rol", $admin[U_TIPO], strtotime('+1 day'), '/');
+        setcookie("Rol", "Administrador", strtotime('+1 day'), '/');
         //Retornamos los datos del usuario encontrado
         return $admin;
     }
 
-    public function logEmpleado($employee){
+    public function logEmpleado($employee)
+    {
         //Si la contraseña coincide, iniciamos la sesion
         session_start();
 
@@ -85,7 +89,7 @@ class Login extends Database
 
         //creamos una cookie
         setcookie("SessionId", true, strtotime('+1 day'), '/');
-        setcookie("Rol", $employee[U_TIPO], strtotime('+1 day'), '/');
+        setcookie("Rol", "Empleado", strtotime('+1 day'), '/');
         //Retornamos los datos del usuario encontrado
         return $employee;
     }

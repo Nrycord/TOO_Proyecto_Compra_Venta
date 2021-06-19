@@ -8,7 +8,7 @@ class LoginController
         require_once "views/login.php";
 
         if (!empty($_POST) && isset($_POST[U_USER])) { //Si los datos fueron ingresados
-            
+
             if ($this->loggedUser($_POST[U_USER], $_POST[U_PASS])) { //Si el usuario se encontro en la base de datos
                 header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
             } else {
@@ -22,11 +22,11 @@ class LoginController
     {
         require_once "models/Login.php";
 
-        $userLog = new Login(); //Creamos una instancia de Login, esta tomará los datos e iniciara la sesion si estan correctos
-
         //Agregamos los datos requeridos para iniciar una sesion
-        $userLog->setUsuario($usuario);
-        $userLog->setPass($pass);
+        $userLog = new Login($usuario, $pass); //Creamos una instancia de Login, esta tomará los datos e iniciara la sesion si estan correctos
+
+        //$userLog->setUsuario($usuario);
+        //$userLog->setPass($pass);
 
         //Si el inicio se sesion fue exitoso, retornara true, de otra forma retorna false
         return $userLog->login();
