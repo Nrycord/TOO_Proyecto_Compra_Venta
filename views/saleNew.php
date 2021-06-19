@@ -9,6 +9,12 @@ require_once "render/BaseLayout.php";
 BaseLayout::renderHead();
 
 ?>
+<head>
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/productForm.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/productTable.css">
+</head>
+
+<body>
 <main class="container">
     <!-- Form-->
     <div class="m-0 mt-3 px-3 vh-50 row justify-content-center align-items-center">
@@ -55,6 +61,7 @@ BaseLayout::renderHead();
                             <th scope="col">Producto</th>
                             <th scope="col">Disponibles</th>
                             <th scope="col">Precio U</th>
+                            <th scope="col" width="60px"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,6 +70,11 @@ BaseLayout::renderHead();
                             <td><a href="#">Producto 1</a></td>
                             <td>10</td>
                             <td>$150</td>
+                            <td>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-success btn-sm" style="width: 40px;"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </td>
                         </tr>
                         <tr class="spacer"><td colspan="100"></td></tr>
 
@@ -71,6 +83,11 @@ BaseLayout::renderHead();
                             <td><a href="#">Producto 2</a></td>
                             <td>30</td>
                             <td>$300</td>
+                            <td>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-success btn-sm" style="width: 40px;"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </td>
                         </tr>
                         <tr class="spacer"><td colspan="100"></td></tr>
                     </tbody>
