@@ -5,4 +5,9 @@ class BaseLayout {
     {
         require_once "layout/header.php";
     }
+
+    public static function renderFoot()
+    {
+        require_once "layout/footer.php";
+    }
 }
