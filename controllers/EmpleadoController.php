@@ -1,28 +1,39 @@
 <?php
 
-class EmpleadoController{
+class EmpleadoController
+{
 
-    private $empleado = new EmpleadoModel();
-    private $productos = new ProductoModel();
+    private $empleado;
+    private $productos;
 
     public function __construct()
     {
         //Aqui requerimos el modelo
     }
 
-    public function autenticarEmpleado(){
+    public function autenticarEmpleado()
+    {
 
         //Agregar definicion
     }
 
-    public function realizarVenta(){
-        
-        //Agregar definicion
+    public function realizarVenta($listaProductos)
+    {
+        $this->productos = $listaProductos;
+        $this->registrarVenta();
+
+        $facturaModel = new FacturaModel();
+        $productosJson = json_encode($this->productos);
+        //return $facturaModel->generarFactura($_POST['fechaFacturacion'], $productosJson, $_POST["tipoFactura"]);
+        /* FALTA IMPLEMENTAR METODO CORRECTAMENTE CON AMBOS TIPO DE FACTURA */
     }
 
-    public function registrarVenta(){
-        
+    public function registrarVenta()
+    {
+        foreach ($this->productos as $producto) {
+            $productoModel = new ProductoModel($producto[PROD_ID], $producto[PROD_NOMBRE], $producto[PROD_CANTIDAD], $producto[PROD_PRECIO], $producto[PROD_CATEGORIA], $producto[PROD_ID_PROV]);
+            $productoModel->modificarProducto();
+        }
         //Agregar definicion
     }
-    
 }
