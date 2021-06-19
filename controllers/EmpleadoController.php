@@ -36,4 +36,16 @@ class EmpleadoController
         }
         //Agregar definicion
     }
+
+    public function mostrarFormularioVenta()
+    {
+        require_once "models/EmpleadoModel.php";
+        $employee = new EmpleadoModel();
+
+        if ($_COOKIE["Rol"] == "Empleado") {
+
+            $employee->showSale();
+            require_once "views/saleNew.php";
+        }
+    }
 }
