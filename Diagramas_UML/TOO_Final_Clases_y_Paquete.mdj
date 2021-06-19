@@ -7069,8 +7069,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1279,
-									"top": 497,
+									"left": 1180,
+									"top": 483,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7090,8 +7090,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1294,
-									"top": 497,
+									"left": 1180,
+									"top": 468,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7111,8 +7111,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1249,
-									"top": 498,
+									"left": 1180,
+									"top": 513,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7196,8 +7196,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1264,
-									"top": 800,
+									"left": 1279,
+									"top": 728,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -7216,8 +7216,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1267,
-									"top": 814,
+									"left": 1292,
+									"top": 725,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -7236,8 +7236,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1260,
-									"top": 773,
+									"left": 1251,
+									"top": 732,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -7285,7 +7285,7 @@
 							"tail": {
 								"$ref": "AAAAAAF6IqL3CAxiD8c="
 							},
-							"points": "1096:208;1096:504;1264:504;1264:792;1239:792",
+							"points": "1096:208;1096:504;1264:504;1264:760",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF6IqL3CQyB5Zs="
@@ -7362,7 +7362,7 @@
 											"font": "Arial;13;1",
 											"left": 1061,
 											"top": 767,
-											"width": 174.484375,
+											"width": 287.92333984375,
 											"height": 13,
 											"text": "FacturaController"
 										},
@@ -7397,7 +7397,7 @@
 									"font": "Arial;13;0",
 									"left": 1056,
 									"top": 760,
-									"width": 184.484375,
+									"width": 297.92333984375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF6IqL3CgyN1lg="
@@ -7434,7 +7434,7 @@
 											"font": "Arial;13;0",
 											"left": 1061,
 											"top": 790,
-											"width": 174.484375,
+											"width": 287.92333984375,
 											"height": 13,
 											"text": "+factura: FacturaModel",
 											"horizontalAlignment": 0
@@ -7443,7 +7443,7 @@
 									"font": "Arial;13;0",
 									"left": 1056,
 									"top": 785,
-									"width": 184.484375,
+									"width": 297.92333984375,
 									"height": 23
 								},
 								{
@@ -7468,7 +7468,7 @@
 											"font": "Arial;13;0",
 											"left": 1061,
 											"top": 813,
-											"width": 174.484375,
+											"width": 287.92333984375,
 											"height": 13,
 											"text": "+emitirFactura()",
 											"horizontalAlignment": 0
@@ -7485,9 +7485,9 @@
 											"font": "Arial;13;0",
 											"left": 1061,
 											"top": 828,
-											"width": 174.484375,
+											"width": 287.92333984375,
 											"height": 13,
-											"text": "+anularFactura(idFactura: int)",
+											"text": "+anularFactura(idFactura: int, tipoFactura: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7502,16 +7502,16 @@
 											"font": "Arial;13;0",
 											"left": 1061,
 											"top": 843,
-											"width": 174.484375,
+											"width": 287.92333984375,
 											"height": 13,
-											"text": "+buscarFactura(idFactura: int)",
+											"text": "+buscarFactura(idFactura: int, tipoFactura: String)",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1056,
 									"top": 808,
-									"width": 184.484375,
+									"width": 297.92333984375,
 									"height": 53
 								},
 								{
@@ -7554,7 +7554,7 @@
 							"containerChangeable": true,
 							"left": 1056,
 							"top": 760,
-							"width": 184.484375,
+							"width": 297.92333984375,
 							"height": 101,
 							"nameCompartment": {
 								"$ref": "AAAAAAF6IqL3CgyRYzE="
@@ -9485,6 +9485,15 @@
 											},
 											"name": "idFactura",
 											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF6IrTYpzxhvDs=",
+											"_parent": {
+												"$ref": "AAAAAAF6IqL3EQ0kNUA="
+											},
+											"name": "tipoFactura",
+											"type": "String"
 										}
 									]
 								},
@@ -9504,6 +9513,15 @@
 											},
 											"name": "idFactura",
 											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAF6IrUaqz1yTlk=",
+											"_parent": {
+												"$ref": "AAAAAAF6IqL3EQ0mPZ4="
+											},
+											"name": "tipoFactura",
+											"type": "String"
 										}
 									]
 								}
