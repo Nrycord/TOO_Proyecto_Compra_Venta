@@ -13,8 +13,6 @@
 
     <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/navbar.css">
     <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/home.css">
-    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/productForm.css">
-    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/productTable.css">
 
     <script src="https://kit.fontawesome.com/caaa137172.js" crossorigin="anonymous"></script>
 
