@@ -1,5 +1,6 @@
 <?php
 require_once "database/Database.php";
+require_once "models/Usuario.php";
 
 class EmpleadoModel extends Usuario
 {
@@ -87,7 +88,7 @@ class EmpleadoModel extends Usuario
 
     public function obtenerUsuarioEmpleado($user, $pass)
     {
-        $query = "SELECT * FROM " . TBL_EMPLEADOS . " WHERE " . U_USER . " LIKE : " . U_USER . " AND " . U_PASS . " LIKE = " . U_PASS . " )";
+        $query = "SELECT * FROM " . TBL_EMPLEADOS . " WHERE " . U_USER . " LIKE =:" . U_USER . " AND " . U_PASS . " LIKE =:" . U_PASS;
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . U_USER, $user);

@@ -8,13 +8,6 @@ require_once "render/BaseLayout.php";
 //seteamos el header de la pagina
 BaseLayout::renderHead();
 
-$json = file_get_contents(BASE_DIR . 'UsuarioActual.json');
-$UsuarioActual = "";
-if ($json != null) {
-    $json = json_decode($json, true);
-    $UsuarioActual = $json;
-}
-
 ?>
 <main class="container">
     <div class="m-0 pt-5 vh-100 row justify-content-center align-items-center">
@@ -23,8 +16,8 @@ if ($json != null) {
                 <div class="row d-flex justify-content-start my-3">
                     <img src="<?= BASE_DIR; ?>/assets/img/logo-lg.png" class="img-fluid" alt="logo-lg">
                 </div>
-                <div class="row d-flex text-left">
-                    <h1>Bienvenido <span class="badge badge-primary">nombre empleado</span></h1>
+                <div class="row d-flex text-left"> 
+                    <h1>Bienvenido <span class="badge badge-primary"><?= $_SESSION[U_NOMBRE]?> <?= $_SESSION[U_APELLIDO]?></span></h1>
                     <h4 class="my-1">Puedes acceder a las distintas opciones en el menú lateral</h4>
                 </div>
             </div>
@@ -75,5 +68,5 @@ if ($json != null) {
 
 <?php
 //seteamos el header de la pagina
-BaseLayout::renderFoot();
+//BaseLayout::renderFoot();
 ?>

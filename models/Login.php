@@ -1,10 +1,10 @@
 <?php
 require_once "database/Database.php";
+require_once "models/AdministradorModel.php";
+require_once "models/EmpleadoModel.php";
 
 class Login extends Database
 {
-    private $empleado = new EmpleadoModel();
-    private $admin = new AdministradorModel();
     private $usuario;
     private $pass;
 
@@ -39,8 +39,11 @@ class Login extends Database
 
     public function login()
     {
-        $resEmpleado = $this->empleado->obtenerUsuarioEmpleado($this->getUsuario(), $this->getPass());
-        $resAdmin = $this->admin->obtenerAdministrador($this->getUsuario(), $this->getPass());
+        $empleado = new EmpleadoModel();
+        $admin = new AdministradorModel();
+
+        $resEmpleado = $empleado->obtenerUsuarioEmpleado($this->getUsuario(), $this->getPass());
+        $resAdmin = $admin->obtenerAdministrador($this->getUsuario(), $this->getPass());
         $result = false;
 
         //Buscamos en la bd un usuario con el que coincida el usuario ingresado, si se encontro:
@@ -48,8 +51,6 @@ class Login extends Database
             $result = $this->logAdmin($resAdmin);
         }elseif(isset($resEmpleado)){
             $result = $this->logEmpleado($resEmpleado);
-        }else{
-            $result = false;
         }
 
         return $result; //Retornamos el false, en caso que no entre a alguna de las verificaciones

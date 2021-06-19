@@ -15,12 +15,12 @@ class HomeController
 
         if($_COOKIE["Rol"] == "Empleado"){
             
-            $showHomeEmpleado = $home->showHomeEmpleado();
+            $home->showHomeEmpleado();
             require_once "views/homeEmployee.php";
 
         }else if($_COOKIE["Rol"] == "Administrador"){
             
-            $showHomeAdmin = $home->showHomeAdmin();
+            $home->showHomeAdmin();
             require_once "views/homeAdmin.php";
         }
         

@@ -8,13 +8,9 @@ class LoginController
         require_once "views/login.php";
 
         if (!empty($_POST) && isset($_POST[U_USER])) { //Si los datos fueron ingresados
-
+            
             if ($this->loggedUser($_POST[U_USER], $_POST[U_PASS])) { //Si el usuario se encontro en la base de datos
-                /*Forma 2, Depende de los valores de $_SESSION que tomemos*/
-                $UsuarioActual = array(U_USER => $_SESSION[U_USUARIO], U_ID_SUCURSAL => $_SESSION[U_ID_SUCURSAL]); //Los ponemos en un arreglo asociativo
-                $UsuarioActual = json_encode($UsuarioActual, JSON_PRETTY_PRINT);
-                file_put_contents("UsuarioActual.json", $UsuarioActual); //Anexamos esos valores a el documento .json
-                header('Location: ' . BASE_DIR . 'Home/showHome'); //Redirigimos a Home
+                header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
             } else {
                 $loginErr = "Error con los datos ingresados"; //En caso que no se encontro el usuario/contrasenia muestra el error
             }
@@ -45,8 +41,6 @@ class LoginController
         setcookie("Rol", null, strtotime('+1 second'), '/');
         unset($_COOKIE);
         unset($_SESSION);
-
-        file_put_contents("UsuarioActual.json", null); //Vaciamos los datos tomados de el usuario activo
 
         header('Location: ' . BASE_DIR . ''); //Mandamos de regreso a la pagina de login
     }
