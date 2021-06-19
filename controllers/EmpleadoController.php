@@ -39,13 +39,19 @@ class EmpleadoController
 
     public function mostrarFormularioVenta()
     {
-        require_once "models/EmpleadoModel.php";
-        $employee = new EmpleadoModel();
 
         if ($_COOKIE["Rol"] == "Empleado") {
+            require_once "models/ClienteModel.php";
+            require_once "models/ProductoModel.php";
+            $listaClientes = new ClienteModel();
+            $listaClientes = $listaClientes->obtenerClientes();
+            $listaProductos = new ProductoModel();
+            $listaProductos = $listaProductos->obtenerProductos();
 
-            $employee->showSale();
+            //$employee->showSale();
             require_once "views/saleNew.php";
+        } else {
+            header('Location: ' . BASE_DIR . 'Login/login');
         }
     }
 }
