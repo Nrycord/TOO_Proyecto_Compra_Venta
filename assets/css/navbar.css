@@ -1,0 +1,13 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+li .btn-outline-light {
+    border: none;
+}
+
+.btn {
+    width: 100%;
+}
