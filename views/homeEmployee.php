@@ -27,7 +27,7 @@ BaseLayout::renderHead();
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Empleado/mostrarFormularioVenta">
                                 <div class="ssb-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Nueva Venta</strong></h2>
                             </a>
