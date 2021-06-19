@@ -32,16 +32,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-1">
-                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome">Inicio</a>
+                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+            <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
+                <li class="nav-item mx-1">
+                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome"><i class="fas fa-users"></i> Clientes</a>
+                </li>
+                <!-- AQUI VAS A MOSTRAR REPORTES SOLO SI ES EMPLEADO -->
+                <li class="nav-item mx-1">
+                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome"><i class="fas fa-folder-open"></i> Reportes</a>
+                </li>
+                <!-- AQUI VAS A MOSTRAR REPORTES SOLO SI ES EMPLEADO -->
+            <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
+                <li class="nav-item mx-1">
+                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome"><i class="fas fa-chair"></i> Productos</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome">Presupuestos</a>
-                </li>
-                <li class="nav-item mx-1">
-                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome">Productos</a>
-                </li>
-                <li class="nav-item mx-1">
-                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome">Proveedores</a>
+                    <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/showHome"><i class="fas fa-truck"></i> Proveedores</a>
                 </li>
                 <li class="nav-item mx-1">
                     <a class="btn btn-danger" href="<?= BASE_DIR; ?>Login/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
