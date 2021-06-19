@@ -23,7 +23,7 @@
 
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow" style="background-color: #4285F4;">
-        <a class="navbar-brand" href="<?= BASE_DIR; ?>Home/showHome">
+        <a class="navbar-brand" href="<?= BASE_DIR; ?>Home/mostrarHomePage">
             <img src="<?= BASE_DIR; ?>/assets/img/logo.png" alt="" width="20" height="30" class="d-inline-block align-top"> <strong>EL ARTESANO</strong>
         </a>
 
@@ -36,7 +36,7 @@
                 <li class="nav-item mx-1">
                     <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/mostrarHomePage"><i class="fas fa-home"></i> Inicio</a>
                 </li>
-            <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
+                <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
                 <li class="nav-item mx-1">
                     <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/mostrarHomePage"><i class="fas fa-users"></i> Clientes</a>
                 </li>
@@ -45,7 +45,7 @@
                     <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/mostrarHomePage"><i class="fas fa-folder-open"></i> Reportes</a>
                 </li>
                 <!-- AQUI VAS A MOSTRAR REPORTES SOLO SI ES EMPLEADO -->
-            <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
+                <!-- UN EMPLEADO SOLO PUEDE VER LA PESTANA DE CLIENTES Y DE REPORTES -->
                 <li class="nav-item mx-1">
                     <a class="btn btn-outline-light" href="<?= BASE_DIR; ?>Home/mostrarHomePage"><i class="fas fa-chair"></i> Productos</a>
                 </li>
