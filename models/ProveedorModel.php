@@ -121,12 +121,12 @@ class ProveedorModel extends Database
         return $message;
     }
 
-    public function obtenerProveedor($idProveedor)
+    public function obtenerProveedor()
     {
         $query = "SELECT * FROM " . TBL_PROVEEDORES . " WHERE " . PROV_ID . " =: " . PROV_ID . " )";
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . PROV_ID, $idProveedor);
+        $statement->bindValue(':' . PROV_ID, $this->getIdProveedor());
 
         //"<h1>Registro no encontrado!</h1>"
         $message = false;
