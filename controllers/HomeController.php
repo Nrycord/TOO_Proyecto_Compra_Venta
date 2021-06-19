@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class HomeController
 {
 
@@ -13,16 +13,14 @@ class HomeController
         require_once "models/Home.php";
         $home = new Home();
 
-        if($_COOKIE["Rol"] == "Empleado"){
-            
-            $showHomeEmpleado = $home->showHomeEmpleado();
-            require_once "views/homeEmployee.php";
+        if ($_COOKIE["Rol"] == "Empleado") {
 
-        }else if($_COOKIE["Rol"] == "Administrador"){
-            
-            $showHomeAdmin = $home->showHomeAdmin();
+            $home->showHomeEmpleado();
+            require_once "views/homeEmployee.php";
+        } else if ($_COOKIE["Rol"] == "Administrador") {
+
+            $home->showHomeAdmin();
             require_once "views/homeAdmin.php";
         }
-        
     }
 }

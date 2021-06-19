@@ -111,13 +111,13 @@ class ClienteModel extends Database
         $statement->bindValue(':' . C_TIPO, $this->getTipoCliente());
 
         //"<h1>Error al agregar el registro!</h1>"
-        $message = false;
+        $result = false;
 
         if ($statement->execute()) {
-            $message = "<h1>Registro agregado con éxito!</h1>";
+            $result = "<h1>Registro agregado con éxito!</h1>";
         }
 
-        return $message;
+        return $result;
     }
 
     public function modificarCliente()
@@ -134,13 +134,13 @@ class ClienteModel extends Database
         $statement->bindValue(':' . C_TIPO, $this->getTipoCliente());
 
         //"<h1>Error al actualizar el registro!</h1>"
-        $message = false;
+        $result = false;
 
         if ($statement->execute()) {
-            $message = "<h1>Registro actualizado con éxito!</h1>";
+            $result = "<h1>Registro actualizado con éxito!</h1>";
         }
 
-        return $message;
+        return $result;
     }
 
     public function eliminarCliente()
@@ -151,29 +151,29 @@ class ClienteModel extends Database
         $statement->bindValue(':' . C_ID, $this->getIdCliente());
 
         //"<h1>Error al eliminar el registro!</h1>"
-        $message = false;
+        $result = false;
 
         if ($statement->execute()) {
-            $message = "<h1>Registro eliminado con éxito!</h1>";
+            $result = "<h1>Registro eliminado con éxito!</h1>";
         }
 
-        return $message;
+        return $result;
     }
 
-    public function obtenerCliente($id)
+    public function obtenerCliente()
     {
         $query = "SELECT * FROM " . TBL_CLIENTES . " WHERE " . C_ID . " =: " . C_ID . " )";
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . C_ID, $id);
+        $statement->bindValue(':' . C_ID, $this->getIdCliente());
 
         //"<h1>Registro no encontrado!</h1>"
-        $message = false;
+        $result = false;
 
         if ($statement->execute()) {
-            $message = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
         }
 
-        return $message;
+        return $result;
     }
 }

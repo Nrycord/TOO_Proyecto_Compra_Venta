@@ -1,35 +1,40 @@
 <?php
 
-class ProveedorController{
+class ProveedorController
+{
 
     public function __construct()
     {
         //Aqui requerimos el modelo
     }
 
-    public function mostrarListaProveedores(){
-
-        //Agregar definicion
+    public function mostrarListaProveedores()
+    {
+        $proveedorModel = new ProveedorModel();
+        return $proveedorModel->obtenerProveedores();
     }
 
-    public function obtenerProveedor($idProveedor){
-        
-        //Agregar definicion
+    public function obtenerProveedor($idProveedor)
+    {
+        $proveedorModel = new ProveedorModel($idProveedor);
+        return $proveedorModel->obtenerProveedor();
     }
 
-    public function agregarProveedor($nombre, $telefono, $direccion){
-        
-        //Agregar definicion
+    public function agregarProveedor($nombre, $telefono, $direccion)
+    {
+        $proveedorModel = new ProveedorModel($nombre, $telefono, $direccion);
+        return $proveedorModel->agregarProveedor();
     }
 
-    public function modificarProveedor($idProveedor ,$nombre, $telefono, $direccion){
-        
-        //Agregar definicion
+    public function modificarProveedor($idProveedor, $nombre, $telefono, $direccion)
+    {
+        $proveedorModel = new ProveedorModel($idProveedor, $nombre, $telefono, $direccion);
+        return $proveedorModel->modificarProveedor();
     }
 
-    public function eliminarProveedor($idProveedor){
-        
-        //Agregar definicion
+    public function eliminarProveedor($idProveedor)
+    {
+        $proveedorModel = new ProveedorModel($idProveedor);
+        return $proveedorModel->eliminarProveedor();
     }
-    
 }
