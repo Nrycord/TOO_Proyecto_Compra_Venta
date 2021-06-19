@@ -147,12 +147,12 @@ class ProductoModel extends Database
         return $message;
     }
 
-    public function obtenerProducto($idProducto)
+    public function obtenerProducto()
     {
         $query = "SELECT * FROM " . TBL_PRODUCTOS . " WHERE " . PROD_ID . " =: " . PROD_ID . " )";
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . PROD_ID, $idProducto);
+        $statement->bindValue(':' . PROD_ID, $this->getIdProducto);
 
         //"<h1>Registro no encontrado!</h1>"
         $message = false;
