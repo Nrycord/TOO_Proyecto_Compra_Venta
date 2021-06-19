@@ -81,7 +81,6 @@ class ClienteModel extends Database
         $statement->bindValue(':' . C_TEL, $this->getTelefono());
         $statement->bindValue(':' . C_TIPO, $this->getTipoCliente());
 
-
         if ($statement->execute()) {
             header('Location: ' . BASE_DIR . 'Home/showHome');
         }

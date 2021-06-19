@@ -1,13 +1,19 @@
 <?php
 require_once "database/Database.php";
+require_once "models/ClienteModel.php";
 
 class FacturaModel extends Database
 {
     private $idFactura;
     private $fechaFacturacion;
+    private $nombreCliente;
+    private $duiCliente;
+    private $direccionCliente;
     private $detalleFactura;
     private $subTotal;
+    private $ivaRetenido;
     private $total;
+
     
     public function __construct()
     {
@@ -74,15 +80,142 @@ class FacturaModel extends Database
         return $this;
     }
 
-    public function obtenerFacturas(){
-        //Agregar definicion
+    public function getNombreCliente()
+    {
+        return $this->nombreCliente;
     }
 
-    public function generarFactura($fechaFacturacion, $detalleFactura, $tipo){
-        //Agregar definicion
+    public function setNombreCliente($nombreCliente)
+    {
+        $this->nombreCliente = $nombreCliente;
+
+        return $this;
+    }
+ 
+    public function getDuiCliente()
+    {
+        return $this->duiCliente;
     }
 
-    public function anularFactura($idFactura){
-        //Agregar definicion
+    public function setDuiCliente($duiCliente)
+    {
+        $this->duiCliente = $duiCliente;
+
+        return $this;
     }
+
+    public function getDireccionCliente()
+    {
+        return $this->direccionCliente;
+    }
+
+    public function setDireccionCliente($direccionCliente)
+    {
+        $this->direccionCliente = $direccionCliente;
+
+        return $this;
+    }
+
+    public function getIvaRetenido()
+    {
+        return $this->ivaRetenido;
+    }
+
+    public function setIvaRetenido($ivaRetenido)
+    {
+        $this->ivaRetenido = $ivaRetenido;
+
+        return $this;
+    }
+
+    public function obtenerFacturasConsumidorFinal(){
+        $query = "SELECT * FROM " . TBL_FACTURAS_CONF;
+        $statement = $this->conn->prepare($query);
+
+        $result = false;
+
+        if ($statement->execute())
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function obtenerFacturasCreditoFiscal(){
+        $query = "SELECT * FROM " . TBL_FACTURAS_CRTF;
+        $statement = $this->conn->prepare($query);
+
+        $result = false;
+
+        if ($statement->execute())
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function generarFacturaConsumidorFinal()
+    {
+        //Guarda una factura a la base de datos
+        $query = "INSERT INTO " . TBL_FACTURAS_CONF . " VALUES(:" . F_FECHA_FACTURACION . ", :" . F_NOMBRE_CLIENTE . ", :" . F_DUI_CLIENTE . ", :" . F_DIRECCION_CLIENTE . ", :" . F_DETALLE_FACTURA . ", :" . F_SUBTOTAL . ", :" . F_IVA_RETENIDO .", :" . F_TOTAL . ", :" . F_ESTADO .")";
+        $statement = $this->conn->prepare($query);
+
+        $statement->bindValue(':' . F_FECHA_FACTURACION, $this->getFechaFacturacion());
+        $statement->bindValue(':' . F_NOMBRE_CLIENTE, $this->getNombreCliente());
+        $statement->bindValue(':' . F_DUI_CLIENTE, $this->getDuiCliente());
+        $statement->bindValue(':' . F_DIRECCION_CLIENTE, $this->getDireccionCliente());
+        $statement->bindValue(':' . F_DETALLE_FACTURA, $this->getDetalleFactura());
+        $statement->bindValue(':' . F_SUBTOTAL, $this->getSubTotal());
+        $statement->bindValue(':' . F_IVA_RETENIDO, $this->getIvaRetenido());
+        $statement->bindValue(':' . F_TOTAL, $this->getTotal());
+        $statement->bindValue(':' . F_ESTADO, "Emitida");
+
+        if ($statement->execute()) {
+            header('Location: ' . BASE_DIR . 'Home/showHome');
+        }
+    }
+
+    public function generarFacturaCreditoFiscal()
+    {
+        //Guarda una factura a la base de datos
+        $query = "INSERT INTO " . TBL_FACTURAS_CRTF . " VALUES(:" . CRTF_FECHA_FACTURACION . ", :" . CRTF_NOMBRE_CLIENTE . ", :" . CRTF_DUI_CLIENTE . ", :" . CRTF_DIRECCION_CLIENTE . ", :" . CRTF_DETALLE_FACTURA . ", :" . CRTF_SUBTOTAL . ", :" . CRTF_IVA_RETENIDO .", :" . CRTF_TOTAL . ", :" . CRTF_ESTADO .")";
+        $statement = $this->conn->prepare($query);
+
+        $statement->bindValue(':' . CRTF_NOMBRE_CLIENTE, $this->getNombreCliente());
+        $statement->bindValue(':' . CRTF_FECHA_FACTURACION, $this->getFechaFacturacion());
+        $statement->bindValue(':' . CRTF_DUI_CLIENTE, $this->getDuiCliente());
+        $statement->bindValue(':' . CRTF_DIRECCION_CLIENTE, $this->getDireccionCliente());
+        $statement->bindValue(':' . CRTF_DETALLE_FACTURA, $this->getDetalleFactura());
+        $statement->bindValue(':' . CRTF_SUBTOTAL, $this->getSubTotal());
+        $statement->bindValue(':' . CRTF_IVA_RETENIDO, $this->getIvaRetenido());
+        $statement->bindValue(':' . CRTF_TOTAL, $this->getTotal());
+        $statement->bindValue(':' . CRTF_ESTADO, "Emitida");
+
+        if ($statement->execute()) {
+            header('Location: ' . BASE_DIR . 'Home/showHome');
+        }
+    }
+
+    public function anularFactura($idFactura, $tipoFactura){
+
+        if($tipoFactura == "Consumidor Final"){
+            $query = "UPDATE " . TBL_FACTURAS_CONF . " SET " . F_ESTADO . "=:" . F_ESTADO . " WHERE " . F_ID . "=:" . F_ID;
+            $statement = $this->conn->prepare($query);
+
+            $statement->bindValue(':' . F_ID, $idFactura);
+            $statement->bindValue(':' . F_ESTADO, "Anulada");
+
+            if ($statement->execute()) {
+                header('Location: ' . BASE_DIR . 'Home/showHome');
+            }
+
+        }elseif($tipoFactura == "Credito Fiscal"){
+            $query = "UPDATE " . TBL_FACTURAS_CRTF . " SET " . CRTF_ESTADO . "=:" . CRTF_ESTADO . " WHERE " . CRTF_ID . "=:" . CRTF_ID;
+            $statement = $this->conn->prepare($query);
+
+            $statement->bindValue(':' . CRTF_ID, $idFactura);
+            $statement->bindValue(':' . CRTF_ESTADO, "Anulada");
+
+            if ($statement->execute()) {
+                header('Location: ' . BASE_DIR . 'Home/showHome');
+            }
+        }   
+    }
+
 }
