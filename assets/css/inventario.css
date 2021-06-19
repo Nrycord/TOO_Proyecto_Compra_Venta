@@ -1,0 +1,269 @@
+.main-table {
+    margin-top: 80px;
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-table * {
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #f1c40f;
+    color: #2f3640;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table tr td img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.table-users {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: scroll;
+    width: 1000px;
+}
+
+table {
+    width: 100%;
+    height: 440px;
+    overflow: auto;
+}
+
+table td,
+table th {
+    color: #2f3640;
+    padding: 10px;
+}
+
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table td:last-child {
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+table th {
+    color: #edf7f8;
+    background-color: #2f3640;
+    font-weight: 300;
+}
+
+table tr:nth-child(2n) {
+    background-color: #ffffff;
+}
+
+table tr:nth-child(2n+1) {
+    background-color: #f8f8f8;
+}
+
+@media screen and (width: 768px), screen and (height: 1024px) {
+
+    .table-users {
+        width: 100%;
+        height: 910px;
+    }
+
+    table {
+        height: 800px;
+    }
+}
+
+@media screen and (width: 540px), screen and (height: 720px) {
+
+    .table-users {
+        width: 100%;
+        height: 600px;
+    }
+
+    table {
+        height: 100%;
+    }
+}
+
+@media screen and (width: 375px), screen and (height: 812px) {
+
+    .table-users {
+        width: 100%;
+        height: 700px;
+    }
+
+    table {
+        height: 100%;
+    }
+}
+
+@media screen and (width: 360px), screen and (height: 640px) {
+
+    .table-users {
+        width: 100%;
+        height: 525px;
+    }
+
+    table {
+        height: 100%;
+    }
+}
+
+@media screen and (width: 320px), screen and (height: 568px) {
+
+    .table-users {
+        width: 100%;
+        height: 455px;
+    }
+
+    table {
+        height: 100%;
+    }
+}
+
+@media screen and (width: 411px), screen and (height: 731px) {
+
+    .table-users {
+        width: 100%;
+        height: 610px;
+    }
+
+    table {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .table-users {
+        overflow: hidden;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    table,
+    tr,
+    td {
+        display: block;
+    }
+
+    td:first-child {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100px;
+    }
+
+    td:not(:first-child) {
+        clear: both;
+        margin-left: 100px;
+        padding: 4px 20px 4px 90px;
+        position: relative;
+        text-align: left;
+    }
+
+    td:not(:first-child):before {
+        color: #2f3640;
+        content: "";
+        display: block;
+        left: 0;
+        position: absolute;
+    }
+
+    td:nth-child(2):before {
+        content: "Articulo:";
+    }
+
+    td:nth-child(3):before {
+        content: "Descripción:";
+    }
+
+    td:nth-child(4):before {
+        content: "Cantidad:";
+    }
+
+    tr {
+        padding: 10px 0;
+        position: relative;
+    }
+
+    tr:first-child {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        background-color: #2f3640;
+        color: white;
+        font-size: 2em;
+        font-weight: 700;
+        padding: 0;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        border: 3px solid;
+        border-color: #daeff1;
+        height: 100px;
+        margin: 0.5rem 0;
+        width: 100px;
+    }
+
+    td:first-child {
+        background-color: #c8e7ea;
+        border-bottom: 1px solid #91ced4;
+        border-radius: 10px 10px 0 0;
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+        width: 100%;
+    }
+
+    td:not(:first-child) {
+        margin: 0;
+        padding: 5px 1em;
+        width: 100%;
+    }
+
+    td:not(:first-child):before {
+        font-size: 0.8em;
+        padding-top: 0.3em;
+        position: relative;
+    }
+
+    td:last-child {
+        padding-bottom: 1rem !important;
+    }
+
+    tr {
+        background-color: white !important;
+        border: 1px solid #6cbec6;
+        border-radius: 10px;
+        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        margin: 0.5rem 0;
+        padding: 0;
+    }
+
+    .table-users {
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
+}

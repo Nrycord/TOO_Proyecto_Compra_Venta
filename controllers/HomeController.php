@@ -16,7 +16,7 @@ class HomeController
         if ($_COOKIE["Rol"] == "Empleado") {
 
             $home->showHomeEmpleado();
-            require_once "views/homeEmployee.php";
+            require_once "views/saleNew.php";
         } else if ($_COOKIE["Rol"] == "Administrador") {
 
             $home->showHomeAdmin();
