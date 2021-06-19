@@ -1,0 +1,131 @@
+/* Design */
+.body * {
+    box-sizing: border-box;
+}
+
+.body {
+    width: 100%;
+    color: #272727;
+    font-weight: 400;
+    letter-spacing: 0;
+    
+}
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main_title {
+    margin-top: 10%;
+    color: #f1c40f;
+    font-size: 60px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+    display: flex;
+    padding: 1rem;
+}
+
+hr {
+    border: 1px dashed #343c46;
+}
+
+.btn {
+    text-decoration: none;
+    -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    background: #57606f;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    border: 0;
+    margin: 0 10px 0 0;
+    padding: 0.8rem;
+    font-size: 14px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+  }
+  
+.btn:hover {
+    background: #2f3640;
+}
+
+@media (min-width: 40rem) {
+    .cards_item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 56rem) {
+    .cards_item {
+        width: 33.3333%;
+    }
+}
+
+.card {
+    background-color: #f1c40f;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card_content {
+    padding: 1rem;
+    background: #f1c40f;
+}
+
+.card_title {
+    text-decoration: line-through;
+    text-decoration-color: #4747473f;
+    text-decoration-thickness: 25px;
+    color: #343c46;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+}
+
+.card_title-status {
+    text-decoration: line-through;
+    text-decoration-color: #4747473f;
+    text-decoration-thickness: 25px;
+    color: #343c46;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.card_text {
+    color: #474d53;
+    font-size: 0.875rem;
+    line-height: 1px;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+.card_text-extra {
+    color: #474d53;
+    font-size: 0.875rem;
+    line-height: 1r em;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}

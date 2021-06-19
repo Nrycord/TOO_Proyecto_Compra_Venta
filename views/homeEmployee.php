@@ -68,5 +68,5 @@ BaseLayout::renderHead();
 
 <?php
 //seteamos el header de la pagina
-//BaseLayout::renderFoot();
+BaseLayout::renderFoot();
 ?>
