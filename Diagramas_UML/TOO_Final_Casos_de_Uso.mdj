@@ -15167,11 +15167,11 @@
 												"$ref": "AAAAAAF6DE8DweyKt9g="
 											},
 											"font": "Arial;13;1",
-											"left": 341,
+											"left": 342.5,
 											"top": 1219.5,
-											"width": 103,
+											"width": 111,
 											"height": 13,
-											"text": "Buscar Prouctos"
+											"text": "Buscar Productos"
 										},
 										{
 											"_type": "LabelView",
@@ -15200,9 +15200,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 336,
+									"left": 337.5,
 									"top": 1212.5,
-									"width": 114.03173828125,
+									"width": 121.97265625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF6DE8DweyL3Bg="
@@ -15297,7 +15297,7 @@
 							"containerChangeable": true,
 							"left": 312,
 							"top": 1208,
-							"width": 161,
+							"width": 172,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAF6DE8DweyKt9g="
@@ -31448,9 +31448,9 @@
 														"$ref": "AAAAAAF48QqxGbeeXMY="
 													},
 													"font": "Arial;13;0",
-													"left": 29.72998046875,
+													"left": 27.55908203125,
 													"top": 10,
-													"width": 115.9052734375,
+													"width": 102.791015625,
 													"height": 13,
 													"text": "SequenceDiagram1"
 												},
@@ -31463,7 +31463,7 @@
 													"font": "Arial;13;1",
 													"left": 10,
 													"top": 10,
-													"width": 14.72998046875,
+													"width": 12.55908203125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -36813,7 +36813,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Buscar Prouctos"
+					"name": "Buscar Productos"
 				},
 				{
 					"_type": "UMLActor",

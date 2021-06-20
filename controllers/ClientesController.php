@@ -1,5 +1,5 @@
 <?php
-
+require_once "models/ClienteModel.php";
 class ClientesController
 {
 
@@ -11,7 +11,8 @@ class ClientesController
     public function mostrarListaClientes()
     {
         $clienteModel = new ClienteModel();
-        return $clienteModel->obtenerClientes();
+        $clientes = $clienteModel->obtenerClientes();
+        require_once "views/clientList.php";
     }
 
     public function obtenerCliente($idCliente)

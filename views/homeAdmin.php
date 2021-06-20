@@ -17,7 +17,7 @@ BaseLayout::renderHead();
                     <img src="<?= BASE_DIR; ?>/assets/img/logo-lg.png" class="img-fluid" alt="logo-lg">
                 </div>
                 <div class="row d-flex text-left">
-                    <h1>Bienvenido <span class="badge badge-primary"><?= $_SESSION[U_NOMBRE]?> <?= $_SESSION[U_APELLIDO]?></span></h1>
+                    <h1>Bienvenido <span class="badge badge-primary"><?= $_SESSION[U_NOMBRE] ?> <?= $_SESSION[U_APELLIDO] ?></span></h1>
                     <h4 class="my-1">Puedes acceder a las distintas opciones en el menú lateral</h4>
                 </div>
             </div>
@@ -36,7 +36,7 @@ BaseLayout::renderHead();
 
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Clientes/mostrarListaClientes">
                                 <div class="ssb-icon"> <i class="fas fa-users-cog" aria-hidden="true"></i> </div>
                                 <h2 class="ssb-title"><strong>Gestionar Clientes</strong></h2>
                             </a>
@@ -45,7 +45,7 @@ BaseLayout::renderHead();
 
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Proveedor/mostrarListaProveedores">
                                 <div class="ssb-icon"><i class="fas fa-truck-monster" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Gestionar Proveedores</strong></h2>
                             </a>
@@ -54,7 +54,7 @@ BaseLayout::renderHead();
 
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Productos/mostrarListaProductos">
                                 <div class="ssb-icon"><i class="fas fa-boxes" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Gestionar Productos</strong></h2>
                             </a>
