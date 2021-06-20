@@ -60,29 +60,29 @@ define('PRPV_ID_PROV', 'idProveedor');
 define('PRPV_PRECIO', 'precioCompra');
 
 //Nombre de la tabla FACTURAS CONSUMIDOR FINAL
-define('TBL_FACTURAS_CONF', '');
+define('TBL_FACTURAS_CONF', 'tbl_factura_cf');
 //Campos de la tabla
-define('F_ID', '');
-define('F_FECHA_FACTURACION', '');
-define('F_NOMBRE_CLIENTE', '');
-define('F_DUI_CLIENTE', '');
-define('F_DIRECCION_CLIENTE', '');
-define('F_DETALLE_FACTURA', '');
-define('F_SUBTOTAL', '');
-define('F_IVA_RETENIDO', '');
-define('F_TOTAL', '');
-define('F_ESTADO', '');
+define('F_ID', 'idFactura');
+define('F_FECHA_FACTURACION', 'fechaFacturacion');
+define('F_NOMBRE_CLIENTE', 'nombreCliente');
+define('F_DUI_CLIENTE', 'duiCliente');
+define('F_DIRECCION_CLIENTE', 'direccionCliente');
+define('F_DETALLE_FACTURA', 'detalleFactura');
+define('F_SUBTOTAL', 'subTotal');
+define('F_IVA_RETENIDO', 'ivaRetenido');
+define('F_TOTAL', 'total');
+define('F_ESTADO', 'estado');
 
 //Nombre de la tabla FACTURAS CREDITO FISCAL
-define('TBL_FACTURAS_CRTF', '');
+define('TBL_FACTURAS_CRTF', 'tbl_factura_crtf');
 //Campos de la tabla
-define('CRTF_ID', '');
-define('CRTF_FECHA_FACTURACION', '');
-define('CRTF_NOMBRE_CLIENTE', '');
-define('CRTF_DUI_CLIENTE', '');
-define('CRTF_DIRECCION_CLIENTE', '');
-define('CRTF_DETALLE_FACTURA', '');
-define('CRTF_SUBTOTAL', '');
-define('CRTF_IVA_RETENIDO', '');
-define('CRTF_TOTAL', '');
-define('CRTF_ESTADO', '');
+define('CRTF_ID', 'idFactura');
+define('CRTF_FECHA_FACTURACION', 'fechaFacturacion');
+define('CRTF_NOMBRE_CLIENTE', 'nombreCliente');
+define('CRTF_DUI_CLIENTE', 'duiCliente');
+define('CRTF_DIRECCION_CLIENTE', 'direccionCliente');
+define('CRTF_DETALLE_FACTURA', 'detalleFactura');
+define('CRTF_SUBTOTAL', 'subTotal');
+define('CRTF_IVA_RETENIDO', 'ivaRetenido');
+define('CRTF_TOTAL', 'total');
+define('CRTF_ESTADO', 'estado');

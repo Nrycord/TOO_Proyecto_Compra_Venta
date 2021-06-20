@@ -1,4 +1,11 @@
 <?php
+
+$json = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
+$data = "";
+if ($json != null) {
+    $json = json_decode($json, true);
+    $data = $json;
+}
 $idFactura = 1;
 $fecha = date("d-m-Y");
 $cliente = "Luis Cabrera Benito";

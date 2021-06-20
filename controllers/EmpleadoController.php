@@ -1,5 +1,7 @@
 <?php
+date_default_timezone_set('America/El_Salvador');
 require_once "models/ProductoModel.php";
+require_once "models/FacturaModel.php";
 
 class EmpleadoController
 {
@@ -43,15 +45,32 @@ class EmpleadoController
             $listaClientes = new ClienteModel();
 
             if (isset($_POST[C_ID])) {
+                $subtotal = 0;
                 $listaClientes->setIdCliente(intval($_POST[C_ID]));
                 $cliente = $listaClientes->obtenerCliente();
                 //Seleccionamos todos los productos
                 $data_results = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
                 $productos = json_decode($data_results, true);
                 //Generar la factura
-                var_dump($cliente);
-                var_dump("<br><br>");
-                var_dump($productos);
+                $facturaModel = new FacturaModel();
+                $facturaModel->setNombreCliente($cliente[C_NOMBRE]);
+                $facturaModel->setDuiCliente($cliente[C_DUI]);
+                $facturaModel->setDireccionCliente($cliente[C_DIR]);
+                $facturaModel->setDetalleFactura($data_results);
+                foreach ($productos as $producto) {
+                    $totalProducto = $producto["cantidad"] * $producto["precioUnitario"];
+                    $subtotal += $totalProducto;
+                    $impuestos = $subtotal * (13 / 100);
+                    $total = $subtotal + $impuestos;
+                }
+                $facturaModel->setSubTotal($subtotal);
+                $facturaModel->setIvaRetenido($impuestos);
+                $facturaModel->setTotal($total);
+                if($cliente[C_TIPO] == "Natural"){
+                    $facturaModel->generarFacturaConsumidorFinal();
+                }elseif($cliente[C_TIPO] == "Fiscal"){
+                    $facturaModel->generarFacturaCreditoFiscal();
+                }
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes
                 //$employee->showSale();
