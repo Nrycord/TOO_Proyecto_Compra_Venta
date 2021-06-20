@@ -140,7 +140,7 @@ class FacturaModel extends Database
     public function generarFacturaConsumidorFinal()
     {
         //Guarda una factura a la base de datos
-        $query = "INSERT INTO " . TBL_FACTURAS_CONF . " VALUES(:" . F_NOMBRE_CLIENTE . ", :" . F_DUI_CLIENTE . ", :" . F_DIRECCION_CLIENTE . ", :" . F_DETALLE_FACTURA . ", :" . F_SUBTOTAL . ", :" . F_IVA_RETENIDO .", :" . F_TOTAL . ", :" . F_ESTADO .")";
+        $query = "INSERT INTO " . TBL_FACTURAS_CONF . " (" . F_NOMBRE_CLIENTE . ", " . F_DUI_CLIENTE . ", " . F_DIRECCION_CLIENTE . ", " . F_DETALLE_FACTURA . ", " . F_SUBTOTAL . ", " . F_IVA_RETENIDO . ", " . F_TOTAL . ", " . F_ESTADO .  ") VALUES(:" . F_NOMBRE_CLIENTE . ", :" . F_DUI_CLIENTE . ", :" . F_DIRECCION_CLIENTE . ", :" . F_DETALLE_FACTURA . ", :" . F_SUBTOTAL . ", :" . F_IVA_RETENIDO . ", :" . F_TOTAL . ", :" . F_ESTADO . ")";        
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . F_NOMBRE_CLIENTE, $this->getNombreCliente());
@@ -153,14 +153,14 @@ class FacturaModel extends Database
         $statement->bindValue(':' . F_ESTADO, "Emitida");
 
         if ($statement->execute()) {
-            header('Location: ' . BASE_DIR . 'Home/showHome');
+            //header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
         }
     }
 
     public function generarFacturaCreditoFiscal()
     {
         //Guarda una factura a la base de datos
-        $query = "INSERT INTO " . TBL_FACTURAS_CRTF . " VALUES(:" . CRTF_NOMBRE_CLIENTE . ", :" . CRTF_DUI_CLIENTE . ", :" . CRTF_DIRECCION_CLIENTE . ", :" . CRTF_DETALLE_FACTURA . ", :" . CRTF_SUBTOTAL . ", :" . CRTF_IVA_RETENIDO .", :" . CRTF_TOTAL . ", :" . CRTF_ESTADO .")";
+        $query = "INSERT INTO " . TBL_FACTURAS_CRTF . " (" . CRTF_NOMBRE_CLIENTE . ", " . CRTF_DUI_CLIENTE . ", " . CRTF_DIRECCION_CLIENTE . ", " . CRTF_DETALLE_FACTURA . ", " . CRTF_SUBTOTAL . ", " . CRTF_IVA_RETENIDO .", " . CRTF_TOTAL . ", " . CRTF_ESTADO . ") VALUES(:" . CRTF_NOMBRE_CLIENTE . ", :" . CRTF_DUI_CLIENTE . ", :" . CRTF_DIRECCION_CLIENTE . ", :" . CRTF_DETALLE_FACTURA . ", :" . CRTF_SUBTOTAL . ", :" . CRTF_IVA_RETENIDO .", :" . CRTF_TOTAL . ", :" . CRTF_ESTADO .")";
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . CRTF_NOMBRE_CLIENTE, $this->getNombreCliente());
@@ -173,7 +173,7 @@ class FacturaModel extends Database
         $statement->bindValue(':' . CRTF_ESTADO, "Emitida");
 
         if ($statement->execute()) {
-            header('Location: ' . BASE_DIR . 'Home/showHome');
+            //header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
         }
     }
 
@@ -187,7 +187,7 @@ class FacturaModel extends Database
             $statement->bindValue(':' . F_ESTADO, "Anulada");
 
             if ($statement->execute()) {
-                header('Location: ' . BASE_DIR . 'Home/showHome');
+                header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
             }
 
         }elseif($tipoFactura == "Credito Fiscal"){
@@ -198,7 +198,7 @@ class FacturaModel extends Database
             $statement->bindValue(':' . CRTF_ESTADO, "Anulada");
 
             if ($statement->execute()) {
-                header('Location: ' . BASE_DIR . 'Home/showHome');
+                header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
             }
         }   
     }

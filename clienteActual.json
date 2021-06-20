@@ -1,0 +1,9 @@
+{
+    "idCliente": "1",
+    "nombre": "Cliente1",
+    "apellido": "Apellido1",
+    "direccion": "Dir1",
+    "dui": "123456789",
+    "telefono": "12345678",
+    "tipoCliente": "Natural"
+}

@@ -2,6 +2,7 @@
 date_default_timezone_set('America/El_Salvador');
 require_once "models/ProductoModel.php";
 require_once "models/FacturaModel.php";
+require_once "controllers/FacturaController.php";
 
 class EmpleadoController
 {
@@ -48,6 +49,8 @@ class EmpleadoController
                 $subtotal = 0;
                 $listaClientes->setIdCliente(intval($_POST[C_ID]));
                 $cliente = $listaClientes->obtenerCliente();
+                $json_data = json_encode($cliente, JSON_PRETTY_PRINT); //Lo codificamos todo
+                file_put_contents('clienteActual.json', $json_data);
                 //Seleccionamos todos los productos
                 $data_results = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
                 $productos = json_decode($data_results, true);
@@ -68,8 +71,14 @@ class EmpleadoController
                 $facturaModel->setTotal($total);
                 if($cliente[C_TIPO] == "Natural"){
                     $facturaModel->generarFacturaConsumidorFinal();
+
+                    $docFactura = new FacturaController();
+                    $docFactura->emitirFactura();
                 }elseif($cliente[C_TIPO] == "Fiscal"){
                     $facturaModel->generarFacturaCreditoFiscal();
+
+                    $docFactura = new FacturaController();
+                    $docFactura->emitirFactura();
                 }
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes
