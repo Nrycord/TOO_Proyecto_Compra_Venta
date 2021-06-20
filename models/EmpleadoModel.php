@@ -50,7 +50,7 @@ class EmpleadoModel extends Usuario
 
     public function modificarEmpleado($idEmpleado)
     {
-        $query = "INSERT INTO " . TBL_EMPLEADOS . " VALUES(:" . U_NOMBRE . ", :" . U_APELLIDO . ", :" . U_USER . ", :" . U_PASS . ", :" . U_TIPO . ")";
+        $query = "UPDATE " . TBL_EMPLEADOS . " VALUES(:" . U_NOMBRE . ", :" . U_APELLIDO . ", :" . U_USER . ", :" . U_PASS . ", :" . U_TIPO . ") WHERE " . EMP_ID . " = " . $idEmpleado;
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . U_NOMBRE, $this->getnombre());

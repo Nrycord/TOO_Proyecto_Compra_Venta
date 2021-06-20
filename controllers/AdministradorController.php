@@ -65,18 +65,6 @@ class AdministradorController
         }
     }
 
-    public function realizarCompraAProveedor()
-    {
-        $idProducto = $_POST[PROD_ID];
-        $cantidadOrden = $_POST[PROD_CANTIDAD];
-        $this->realizarPresupuesto();
-
-        $this->productoModel->setIdProducto($idProducto);
-        $producto = $this->productoModel->obtenerProducto();
-        $this->productoModel = new ProductoModel($producto[PROD_ID], $producto[PROD_NOMBRE], doubleval($producto[PROD_CANTIDAD]) + $cantidadOrden, $producto[PROD_PRECIO], $producto[PROD_CATEGORIA], $producto[PROD_ID_PROV]);
-        return $this->productoModel->modificarProducto();
-    }
-
     public function tablaProductos()
     {
         $productoModel = new ProductoModel();
