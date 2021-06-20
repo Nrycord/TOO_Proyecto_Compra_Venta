@@ -1,8 +1,7 @@
 <?php
+require_once "models/ReporteModel.php";
 
 class ReporteController{
-
-    private $reporte = new ReporteModel();
 
     public function __construct()
     {
@@ -24,9 +23,13 @@ class ReporteController{
         //Agregar definicion
     }
 
-    public function buscarReporte(){
-        
-        //Agregar definicion
+    public function mostrarReporte(){
+        $reporte = new ReporteModel();
+        $reporte->obtenerReportesVentas();
+
+        $facturas = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/reportesVentas.json');
+        $reporteFacturas = json_decode($facturas, true);
+        require_once "views/reportes.php";
     }
     
 }
