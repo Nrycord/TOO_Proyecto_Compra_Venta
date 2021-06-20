@@ -26,7 +26,7 @@ BaseLayout::renderHead();
                         <h1>Realiza una nueva venta</h1>
                     </div>
                     <div class="form-content">
-                        <form action="<?= BASE_DIR; ?>Login/login" method="POST">
+                        <form action="<?= BASE_DIR; ?>Empleado/mostrarFormularioVenta" method="POST">
                             <div class="form-group">
                                 <label for="<?= C_ID ?>">Selecciona un cliente</label>
                                 <select name="<?= C_ID ?>" required="required">
@@ -39,14 +39,17 @@ BaseLayout::renderHead();
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="products">Elige los productos</label>
-                                        <input type="text" name="products" required="required" />
+                                        <input type="text" name="filtroProducto" id="filtroProducto" />
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-group">
-                                        <button type="submit" class="button-search"><i class="fas fa-search"></i></button>
+                                        <button type="button" onclick="reloadInfo()" class="button-search"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" onclick="reloadInfo()" class="button-search">Realizar Compra</button>
                             </div>
                         </form>
                     </div>
@@ -54,173 +57,32 @@ BaseLayout::renderHead();
             </div>
         </div>
 
-        <div class="m-0 px-3 vh-50 row justify-content-center">
-            <div class="content">
-                <div class="container mt-2">
-                    <div class="table-responsive custom-table-responsive" style="max-height: 55vh">
-                        <table class="table table-hover custom-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Disponibles</th>
-                                    <th scope="col">Precio U</th>
-                                    <th scope="col" width="60px"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr scope="row">
-                                    <td>1</td>
-                                    <td><a href="#">Producto 1</a></td>
-                                    <td>10</td>
-                                    <td>$150</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-success btn-sm" style="width: 40px;"><i class="fas fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
+        <div id="tablaProductos"></div>
 
-                                <tr scope="row">
-                                    <td>2</td>
-                                    <td><a href="#">Producto 2</a></td>
-                                    <td>30</td>
-                                    <td>$300</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-success btn-sm" style="width: 40px;"><i class="fas fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="tablaPresupuesto"></div>
 
-        <div class="m-0 px-3 vh-50 row justify-content-center">
-            <div class="content">
-                <div class="container">
-                    <div class="form-header">
-                        <h1 class="mt-4">Presupuesto</h1>
-                    </div>
-                    <div class="table-responsive custom-table-responsive" style="max-height: 55vh">
 
-                        <table class="table table-hover custom-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Cantidad</th>
-                                    <th scope="col">Precio U</th>
-                                    <th scope="col" width="60px"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr scope="row">
-                                    <td>1</td>
-                                    <td><a href="#">Producto 1</a></td>
-                                    <td>10</td>
-                                    <td>$150</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                                <tr scope="row">
-                                    <td>2</td>
-                                    <td><a href="#">Producto 2</a></td>
-                                    <td>30</td>
-                                    <td>$300</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                                <tr scope="row">
-                                    <td>1</td>
-                                    <td><a href="#">Producto 1</a></td>
-                                    <td>10</td>
-                                    <td>$150</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                                <tr scope="row">
-                                    <td>2</td>
-                                    <td><a href="#">Producto 2</a></td>
-                                    <td>30</td>
-                                    <td>$300</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                                <tr scope="row">
-                                    <td>1</td>
-                                    <td><a href="#">Producto 1</a></td>
-                                    <td>10</td>
-                                    <td>$150</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                                <tr scope="row">
-                                    <td>2</td>
-                                    <td><a href="#">Producto 2</a></td>
-                                    <td>30</td>
-                                    <td>$300</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="far fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer">
-                                    <td colspan="100"></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        reloadInfo();
+        reloadPresupuesto();
+        var timeout = setInterval(reloadPresupuesto, 10000);
+
+        function reloadInfo() {
+            reloadPresupuesto();
+            producto = document.getElementById('filtroProducto').value; //Tomamos el texto para el filtro
+            //Ejecutamos una funcion nueva, donde le pasamos el nombre del producto a buscar
+            $('#tablaProductos').load('<?= BASE_DIR ?>Empleado/tablaProductos&producto=' + producto);
+        }
+
+
+        function reloadPresupuesto() {
+            //Ejecutamos una funcion nueva, donde le pasamos el nombre del producto a buscar
+            $('#tablaPresupuesto').load('<?= BASE_DIR ?>Empleado/tablaPresupuesto');
+        }
+    </script>
 
     <?php
     //seteamos el header de la pagina
