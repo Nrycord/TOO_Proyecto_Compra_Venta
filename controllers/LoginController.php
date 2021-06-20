@@ -25,9 +25,6 @@ class LoginController
         //Agregamos los datos requeridos para iniciar una sesion
         $userLog = new Login($usuario, $pass); //Creamos una instancia de Login, esta tomará los datos e iniciara la sesion si estan correctos
 
-        //$userLog->setUsuario($usuario);
-        //$userLog->setPass($pass);
-
         //Si el inicio se sesion fue exitoso, retornara true, de otra forma retorna false
         return $userLog->login();
     }
