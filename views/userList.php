@@ -18,24 +18,37 @@ BaseLayout::renderHead();
 <main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
     <div class="content">
         <div class="container mt-5">
-            <h1 class="table-header">Lista de Usuarios</h1>
+            <div class="row">
+                <div class="col-auto">
+                    <h1 class="table-header">Lista de Clientes</h1>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" href="">Agregar cliente</a>
+                </div>
+            </div>
             <div class="table-responsive custom-table-responsive" style="max-height: 80vh">
                 <table class="table table-hover custom-table">
                     <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Proveedor</th>
-                            <th scope="col">Teléfono</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
                             <th scope="col">Dirección</th>
+                            <th scope="col">DUI</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col" width="120px">Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr scope="row">
                             <td>1</td>
-                            <td><a href="#">IKEA</a></td>
-                            <td>0000-0000</td>
+                            <td><a href="#">Fulano</a></td>
+                            <td>Mengano</td>
                             <td>direcccion 1</td>
+                            <td>00000000-0</td>
+                            <td>0000-0000</td>
+                            <td>tipo</td>
                             <td>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-outline-secondary btn-sm" style="width: 40px;"><i class="far fa-edit"></i></button>
@@ -49,9 +62,12 @@ BaseLayout::renderHead();
 
                         <tr scope="row">
                             <td>2</td>
-                            <td><a href="#">FurnCo</a></td>
+                            <td><a href="#">Fulana</a></td>
+                            <td>Mengano</td>
+                            <td>direcccion 1</td>
+                            <td>00000000-0</td>
                             <td>0000-0000</td>
-                            <td>direcccion 2</td>
+                            <td>tipo</td>
                             <td>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-outline-secondary btn-sm" style="width: 40px;"><i class="far fa-edit"></i></button>

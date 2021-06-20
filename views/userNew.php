@@ -20,7 +20,7 @@ BaseLayout::renderHead();
     <div class="form col-auto">
         <div class="form-panel one">
             <div class="form-header">
-                <h1>Nuevo Usuario</h1>
+                <h1>Nuevo Cliente</h1>
             </div>
             <div class="form-content">
                 <form action="<?= BASE_DIR; ?>Login/login" method="POST">
@@ -33,21 +33,38 @@ BaseLayout::renderHead();
                         <input type="text" name="" required/>
                     </div>
                     <div class="form-group">
-                        <label for="">Usuario</label>
-                        <input type="text" name="" required/>
+                        <label for="">Dirección</label>
+                        <textarea name="" id="" cols="10" rows="2" required>
+
+                        </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="">Contraseña</label>
-                        <input type="password" name="" required/>
+                        <label for="">DUI</label>
+                        <input type="text" id="dui" name="" required/>
                     </div>
                     <div class="form-group">
-                        <button type="submit">Agregar Usuario</button>
+                        <label for="">Teléfono</label>
+                        <input type="text" id="telefono" name="" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tipo</label>
+                        <select type="text" name="" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Agregar Cliente</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </main>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="assets/js/script.js"></script>
 
 <?php
 //seteamos el header de la pagina
