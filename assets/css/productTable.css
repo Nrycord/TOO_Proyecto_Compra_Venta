@@ -1,3 +1,11 @@
+.table-header {
+    padding: 4px 0;
+    color: #4285F4;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .table-responsive::-webkit-scrollbar {
     width: 6px;
     height: 6px;
