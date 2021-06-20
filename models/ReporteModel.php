@@ -1,5 +1,6 @@
 <?php
 require_once "database/Database.php";
+require_once "models/FacturaModel.php";
 
 class ReporteModel extends Database
 {
@@ -36,7 +37,13 @@ class ReporteModel extends Database
     }
 
     public function obtenerReportesVentas(){
-        //Agregar definicion
+        $facturas = new FacturaModel();
+
+        $facturasCF = $facturas->obtenerFacturasConsumidorFinal();
+        $facturasCTF = $facturas->obtenerFacturasCreditoFiscal();
+
+        $json_data = json_encode(array_merge($facturasCF,$facturasCTF), JSON_PRETTY_PRINT); //Lo codificamos todo
+        file_put_contents('reportesVentas.json', $json_data);
     }
 
     public function crearReporteVentas(){
