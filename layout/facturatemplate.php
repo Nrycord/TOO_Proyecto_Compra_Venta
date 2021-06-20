@@ -1,28 +1,23 @@
 <?php
+$clienteActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/clienteActual.json');
+$client = json_decode($clienteActual, true);
+$idFacturaActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/facturaActual.json');
+$idFact = json_decode($idFacturaActual, true);
+$facturaActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/listaVentaProductos.json');
+$productos = json_decode($facturaActual, true);
 
-$json = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
-$data = "";
-if ($json != null) {
-    $json = json_decode($json, true);
-    $data = $json;
-}
-$idFactura = 1;
+$idFactura = $idFact["idFactura"];
 $fecha = date("d-m-Y");
-$cliente = "Luis Cabrera Benito";
-$dui = "05974059-2";
-$direccion = "Col. Presita 1, Pasaje Sesori, Casa #4";
-$productos = [
-    [
-        "precio" => 50,
-        "descripcion" => "Procesador AMD Ryzen 7",
-        "cantidad" => 1,
-    ],
-    [
-        "precio" => 800,
-        "descripcion" => "Tarjeta de vídeo",
-        "cantidad" => 2,
-    ],
-];
+
+if($client["tipoCliente"] == "Natural"){
+    $tipoFactura = "Factura Consumidor Final";
+}elseif($client["tipoCliente"] == "Fiscal"){
+    $tipoFactura = "Factura Credito Fiscal";
+}
+$cliente = $client["nombre"];
+$dui = $client["dui"];
+$direccion = $client["direccion"];
+
 $mensajePie = "Gracias por su compra";
 $porcentajeImpuestos = 13;
 ?>
@@ -47,9 +42,8 @@ $porcentajeImpuestos = 13;
                         <br>
                         <?php echo $fecha ?>
                         <br>
-                        <strong>Factura Credito Fiscal No.</strong>
-                        <br>
-                        <?php echo $idFactura ?>
+                        <strong><?php echo $tipoFactura ?> No. </strong>
+                        <strong class="text-danger"><?php echo $idFactura ?></strong>
                     </th>
                 </tr>
             </thead>
@@ -85,13 +79,13 @@ $porcentajeImpuestos = 13;
                 <?php
                 $subtotal = 0;
                 foreach ($productos as $producto) {
-                    $totalProducto = $producto["cantidad"] * $producto["precio"];
+                    $totalProducto = $producto["cantidad"] * $producto["precioUnitario"];
                     $subtotal += $totalProducto;
                     ?>
                     <tr>
-                        <td><?php echo $producto["descripcion"] ?></td>
+                        <td><?php echo $producto["nombre"] ?></td>
                         <td><?php echo number_format($producto["cantidad"], 2) ?></td>
-                        <td>$<?php echo number_format($producto["precio"], 2) ?></td>
+                        <td>$<?php echo number_format($producto["precioUnitario"], 2) ?></td>
                         <td>$<?php echo number_format($totalProducto, 2) ?></td>
                     </tr>
                 <?php }

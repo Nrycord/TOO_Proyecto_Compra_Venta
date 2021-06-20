@@ -1,24 +1,24 @@
 [
     {
+        "idProducto": "3",
+        "nombre": "Producto2",
+        "cantidad": "3",
+        "precioUnitario": "100",
+        "categoria": "Categoria2",
+        "idProveedor": "1"
+    },
+    {
         "idProducto": "2",
         "nombre": "Producto1",
-        "cantidad": "2",
+        "cantidad": "3",
         "precioUnitario": "25",
         "categoria": "Categoria1",
         "idProveedor": "1"
     },
     {
-        "idProducto": "4",
-        "nombre": "Producto3",
-        "cantidad": "1",
-        "precioUnitario": "20",
-        "categoria": "Categoria3",
-        "idProveedor": "2"
-    },
-    {
         "idProducto": "5",
         "nombre": "Producto4",
-        "cantidad": "3",
+        "cantidad": "4",
         "precioUnitario": "50",
         "categoria": "Categoria4",
         "idProveedor": "3"
