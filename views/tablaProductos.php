@@ -9,7 +9,8 @@
                             <th scope="col">Producto</th>
                             <th scope="col">Disponibles</th>
                             <th scope="col">Precio U</th>
-                            <th scope="col">Venta</th>
+                            <?php echo !strcmp($tipo, "compra") ?
+                                '<th scope="col">Compra</th>' : '<th scope="col">Venta</th>'; ?>
                             <th scope="col" width="60px"></th>
                         </tr>
                     </thead>
@@ -43,16 +44,19 @@
 
 <script>
     function myAjax(idProducto) {
+        var tipo = "<?= $tipo ?>";
+
+        var dir = tipo == "compra" ? "Administrador" : "Empleado";
         $.ajax({
             type: "POST",
-            url: '<?= BASE_DIR ?>Empleado/tablaProductos',
+            url: '<?= BASE_DIR ?>' + dir + '/tablaProductos',
             data: {
                 idProducto: idProducto,
                 cantidad: document.getElementById("cantidad" + idProducto).value
             },
             success: function() {
                 $("#" + idProducto).remove();
-                alert("Producto agregado a la lista");
+                alert("Producto agregado a la lista" + dir);
             }
 
         });

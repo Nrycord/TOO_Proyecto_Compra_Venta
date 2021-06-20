@@ -44,6 +44,8 @@ class EmpleadoController
         if ($_COOKIE["Rol"] == "Empleado") {
             require_once "models/ClienteModel.php";
             $listaClientes = new ClienteModel();
+            require_once "models/ProductoModel.php";
+            $productoBD = new ProductoModel();
 
             if (isset($_POST[C_ID])) {
                 $subtotal = 0;
@@ -61,7 +63,12 @@ class EmpleadoController
                 $facturaModel->setDireccionCliente($cliente[C_DIR]);
                 $facturaModel->setDetalleFactura($data_results);
                 foreach ($productos as $producto) {
-                    $totalProducto = $producto["cantidad"] * $producto["precioUnitario"];
+                    $productoBD->setIdProducto($producto[PROD_ID]);
+                    $prodAux = $productoBD->obtenerProducto();
+                    $cantidadActual = $prodAux[PROD_CANTIDAD] - $producto[PROD_CANTIDAD];
+                    $productoBD = new ProductoModel($prodAux[PROD_ID], $prodAux[PROD_NOMBRE], $cantidadActual, $prodAux[PROD_PRECIO], $prodAux[PROD_CATEGORIA], $prodAux[PROD_ID_PROV]);
+                    $productoBD->modificarProducto();
+                    $totalProducto = $producto[PROD_CANTIDAD] * $producto[PROD_PRECIO];
                     $subtotal += $totalProducto;
                     $impuestos = $subtotal * (13 / 100);
                     $total = $subtotal + $impuestos;
@@ -69,14 +76,14 @@ class EmpleadoController
                 $facturaModel->setSubTotal($subtotal);
                 $facturaModel->setIvaRetenido($impuestos);
                 $facturaModel->setTotal($total);
-                if($cliente[C_TIPO] == "Natural"){
+                if ($cliente[C_TIPO] == "Natural") {
                     $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
                     $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
                     file_put_contents('facturaActual.json', $json_data);
 
                     $docFactura = new FacturaController();
                     $docFactura->emitirFactura();
-                }elseif($cliente[C_TIPO] == "Fiscal"){
+                } elseif ($cliente[C_TIPO] == "Fiscal") {
                     $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
                     $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
                     file_put_contents('facturaActual.json', $json_data);
@@ -99,7 +106,7 @@ class EmpleadoController
     public function tablaProductos()
     {
         $productoModel = new ProductoModel();
-
+        $tipo = "venta";
         //Si obtenemos el nombre de un producto lo buscamos en la bd
         if (isset($_GET["producto"]) && $_GET["producto"] != null && $_GET["producto"] != false) {
             $productoModel = new ProductoModel(null, $_GET["producto"]);
@@ -121,6 +128,7 @@ class EmpleadoController
             //Tomamos los datos actuales de nuestro arreglo
             $data_results = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
 
+
             //Si el archivo no esta vacio anexamos el producto seleccionado
             if (!empty($data_results) && $data_results != "") {
 
@@ -138,16 +146,17 @@ class EmpleadoController
 
     public function tablaPresupuesto()
     {
+        $tipo = "venta";
         //Obtenemos los datos de el json
         $data_results = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
+
         //Decodificamos estos en una arreglo
         $productos = json_decode($data_results, true);
         if ($productos != null) {
             if (isset($_POST["idEliminar"])) {
                 var_dump($productos);
             }
-            // Only keep unique values, by using array_unique with SORT_REGULAR as flag.
-            // We're using array_values here, to only retrieve the values and not the keys.
+
             // Eliminamos los campos repetidos en el arreglo
             $array = array_values(array_unique($productos, SORT_REGULAR));
             $result = json_encode($array, JSON_PRETTY_PRINT); //Codificamos

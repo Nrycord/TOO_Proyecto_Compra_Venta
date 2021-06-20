@@ -52,7 +52,7 @@ define('U_PASS', 'password');
 define('U_TIPO', 'tipoUsuario');
 
 //Nombre de la tabla 3
-define('TBL_PROD_PROV', 'tbl_productos_proveedor');
+define('TBL_PROD_PROV', 'tbl_producto_proveedor');
 //Campos de la tabla 3
 define('PRPV_ID', 'idProdProv');
 define('PRPV_ID_PROD', 'idProducto');
