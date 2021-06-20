@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2021 a las 00:15:09
+-- Tiempo de generación: 20-06-2021 a las 10:30:50
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Versión de PHP: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -92,6 +92,44 @@ CREATE TABLE `tbl_empleados` (
 
 INSERT INTO `tbl_empleados` (`idEmpleado`, `nombre`, `apellido`, `usuario`, `password`, `tipoUsuario`) VALUES
 (1, 'empleado1', 'apellido1', 'empleado', '1234', 'Empleado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_factura_cf`
+--
+
+CREATE TABLE `tbl_factura_cf` (
+  `idFactura` int(4) NOT NULL,
+  `fechaFacturacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `nombreCliente` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `duiCliente` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `direccionCliente` varchar(900) COLLATE utf8_spanish_ci NOT NULL,
+  `detalleFactura` longtext COLLATE utf8_spanish_ci NOT NULL,
+  `subTotal` float(10,2) NOT NULL,
+  `ivaRetenido` float(10,2) NOT NULL,
+  `total` float(10,2) NOT NULL,
+  `estado` enum('Emitida','Anulada') COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_factura_crtf`
+--
+
+CREATE TABLE `tbl_factura_crtf` (
+  `idFactura` int(4) NOT NULL,
+  `fechaFacturacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `nombreCliente` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `duiCliente` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `direccionCliente` varchar(900) COLLATE utf8_spanish_ci NOT NULL,
+  `detalleFactura` longtext COLLATE utf8_spanish_ci NOT NULL,
+  `subTotal` float(10,2) NOT NULL,
+  `ivaRetenido` float(10,2) NOT NULL,
+  `total` float(10,2) NOT NULL,
+  `estado` enum('Emitida','Anulada') COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -187,6 +225,18 @@ ALTER TABLE `tbl_empleados`
   ADD PRIMARY KEY (`idEmpleado`);
 
 --
+-- Indices de la tabla `tbl_factura_cf`
+--
+ALTER TABLE `tbl_factura_cf`
+  ADD PRIMARY KEY (`idFactura`);
+
+--
+-- Indices de la tabla `tbl_factura_crtf`
+--
+ALTER TABLE `tbl_factura_crtf`
+  ADD PRIMARY KEY (`idFactura`);
+
+--
 -- Indices de la tabla `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
@@ -228,6 +278,18 @@ ALTER TABLE `tbl_clientes`
 --
 ALTER TABLE `tbl_empleados`
   MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_factura_cf`
+--
+ALTER TABLE `tbl_factura_cf`
+  MODIFY `idFactura` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_factura_crtf`
+--
+ALTER TABLE `tbl_factura_crtf`
+  MODIFY `idFactura` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_productos`
