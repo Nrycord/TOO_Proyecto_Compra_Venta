@@ -34,13 +34,14 @@ class ClientesController
 
     public function modificarCliente()
     {
+        $clienteModel = new ClienteModel($_POST[C_ID], $_POST[C_NOMBRE], $_POST[C_APELLIDO], $_POST[C_DIR], $_POST[C_DUI], $_POST[C_TEL], $_POST[C_TIPO]);
         $clienteModel = new ClienteModel();
         return $clienteModel->modificarCliente();
     }
 
     public function eliminarCliente()
     {
-        $clienteModel = new ClienteModel();
+        $clienteModel = new ClienteModel($_POST[C_ID]);
         return $clienteModel->eliminarCliente();
     }
 }
