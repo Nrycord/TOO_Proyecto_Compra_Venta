@@ -1,9 +1,9 @@
 {
-    "idCliente": "4",
-    "nombre": "Cliente4",
-    "apellido": "Apellido4",
-    "direccion": "Dir4",
+    "idCliente": "1",
+    "nombre": "Cliente1",
+    "apellido": "Apellido1",
+    "direccion": "Dir1",
     "dui": "123456789",
     "telefono": "12345678",
-    "tipoCliente": "Fiscal"
+    "tipoCliente": "Natural"
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2021 a las 21:12:55
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 20-06-2021 a las 22:11:08
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_too_compra_venta`
 --
+CREATE DATABASE IF NOT EXISTS `bd_too_compra_venta` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `bd_too_compra_venta`;
 
 -- --------------------------------------------------------
 
@@ -68,6 +70,27 @@ INSERT INTO `tbl_clientes` (`idCliente`, `nombre`, `apellido`, `direccion`, `dui
 (2, 'Cliente2', 'Apellido2', 'Dir2', '123456789', 12345678, 'Natural'),
 (3, 'Cliente3', 'Apellido3', 'Dir3', '123456789', 12345678, 'Fiscal'),
 (4, 'Cliente4', 'Apellido4', 'Dir4', '123456789', 12345678, 'Fiscal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_compras`
+--
+
+CREATE TABLE `tbl_compras` (
+  `idCompra` int(11) NOT NULL,
+  `detalleCompra` longtext COLLATE utf8_spanish_ci NOT NULL,
+  `total` float(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_compras`
+--
+
+INSERT INTO `tbl_compras` (`idCompra`, `detalleCompra`, `total`) VALUES
+(1, '[\n    {\n        \"idProducto\": \"7\",\n        \"nombre\": \"Cama Queen\",\n        \"cantidad\": \"10\",\n        \"precioUnitario\": \"460\",\n        \"categoria\": \"Dormitorio\",\n        \"idProveedor\": \"1\"\n    },\n    {\n        \"idProducto\": \"6\",\n        \"nombre\": \"Cama King\",\n        \"cantidad\": \"10\",\n        \"precioUnitario\": \"450\",\n        \"categoria\": \"Dormitorio\",\n        \"idProveedor\": \"1\"\n    },\n    {\n        \"idProducto\": \"3\",\n        \"nombre\": \"puerta roble roja\",\n        \"cantidad\": \"10\",\n        \"precioUnitario\": \"100\",\n        \"categoria\": \"Puertas\",\n        \"idProveedor\": \"1\"\n    }\n]', 11413.00),
+(2, '[\n    {\n        \"idProducto\": \"2\",\n        \"nombre\": \"puerta roble golden\",\n        \"cantidad\": \"1\",\n        \"precioUnitario\": \"25\",\n        \"categoria\": \"Puertas\",\n        \"idProveedor\": \"1\"\n    }\n]', 28.25),
+(3, '[\n    {\n        \"idProducto\": \"8\",\n        \"nombre\": \"Cama King Royal\",\n        \"cantidad\": \"7\",\n        \"precioUnitario\": \"32\",\n        \"categoria\": \"Dormitorio\",\n        \"idProveedor\": \"2\"\n    }\n]', 253.12);
 
 -- --------------------------------------------------------
 
@@ -149,24 +172,24 @@ CREATE TABLE `tbl_productos` (
 --
 
 INSERT INTO `tbl_productos` (`idProducto`, `nombre`, `cantidad`, `precioUnitario`, `categoria`, `idProveedor`) VALUES
-(2, 'puerta roble golden', 20, 75, 'Puertas', 1),
-(3, 'puerta roble roja', 50, 75, 'Puertas', 1),
-(4, 'puerta roble blanca', 60, 65, 'Puertas', 2),
-(5, 'puerta roble caoba', 100, 69, 'Puertas', 3),
-(6, 'Cama King', 15, 450, 'Dormitorio', 1),
-(7, 'Cama Queen', 15, 460, 'Dormitorio', 1),
-(8, 'Cama King Royal', 13, 450, 'Dormitorio', 2),
-(9, 'Cama Queen Royal', 20, 460, 'Dormitorio', 3),
+(2, 'puerta roble golden', 21, 25, 'Puertas', 1),
+(3, 'puerta roble roja', 60, 100, 'Puertas', 1),
+(4, 'puerta roble blanca', 60, 20, 'Puertas', 2),
+(5, 'puerta roble caoba', 100, 50, 'Puertas', 3),
+(6, 'Cama King', 25, 39, 'Dormitorio', 1),
+(7, 'Cama Queen', 25, 9, 'Dormitorio', 1),
+(8, 'Cama King Royal', 20, 32, 'Dormitorio', 2),
+(9, 'Cama Queen Royal', 20, 14, 'Dormitorio', 3),
 (10, 'Cama Matrimonial', 15, 390, 'Dormitorio', 1),
-(11, 'Camarote full blanco', 12, 450, 'Dormitorio', 2),
-(12, 'Camarote full negro', 23, 460, 'Dormitorio', 2),
-(13, 'Gavetero negro', 17, 460, 'Dormitorio', 1),
-(14, 'Gavetero negro', 16, 356, 'Dormitorio', 2),
-(15, 'Gavetero blanco ', 15, 410, 'Dormitorio', 1),
-(16, 'Mueble cocina Caoba', 27, 599, 'Cocina', 4),
-(17, 'Mueble cocina Vidri', 23, 599, 'Cocina', 4),
-(18, '\r\njuego comedor 4p', 24, 499, 'Comedor', 1),
-(19, '\r\njuego comedor 6p', 24, 499, 'Comedor', 1);
+(11, 'Camarote full blanco', 12, 97, 'Dormitorio', 2),
+(12, 'Camarote full negro', 23, 37, 'Dormitorio', 2),
+(13, 'Gavetero negro', 17, 124, 'Dormitorio', 1),
+(14, 'Gavetero negro', 16, 39, 'Dormitorio', 2),
+(15, 'Gavetero blanco ', 15, 58, 'Dormitorio', 1),
+(16, 'Mueble cocina Caoba', 27, 21, 'Cocina', 4),
+(17, 'Mueble cocina Vidri', 23, 25, 'Cocina', 4),
+(18, '\r\njuego comedor 4p', 24, 100, 'Comedor', 1),
+(19, '\r\njuego comedor 6p', 24, 50, 'Comedor', 1);
 
 -- --------------------------------------------------------
 
@@ -231,6 +254,12 @@ ALTER TABLE `tbl_clientes`
   ADD PRIMARY KEY (`idCliente`);
 
 --
+-- Indices de la tabla `tbl_compras`
+--
+ALTER TABLE `tbl_compras`
+  ADD PRIMARY KEY (`idCompra`);
+
+--
 -- Indices de la tabla `tbl_empleados`
 --
 ALTER TABLE `tbl_empleados`
@@ -284,6 +313,12 @@ ALTER TABLE `tbl_administradores`
 --
 ALTER TABLE `tbl_clientes`
   MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_compras`
+--
+ALTER TABLE `tbl_compras`
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_empleados`
