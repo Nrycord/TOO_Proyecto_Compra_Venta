@@ -116,11 +116,6 @@ class ClienteModel extends Database
 
         if ($statement->execute()) {
             $result = "<h1>Registro agregado con éxito!</h1>";
-
-            //$query = "SELECT * FROM " . TBL_CLIENTES . " ORDER BY  " . C_ID . " DESC LIMIT 1";
-            //$statement = $this->conn->prepare($query);
-            //$statement->execute();
-            //$result = $statement->fetch(PDO::FETCH_ASSOC);
         }
 
         return $result;

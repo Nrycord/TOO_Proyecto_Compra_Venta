@@ -9,45 +9,46 @@ require_once "render/BaseLayout.php";
 BaseLayout::renderHead();
 
 ?>
+
 <head>
     <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/form.css">
 </head>
 
 <body>
 
-<main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
-    <!-- Form-->
-    <div class="form col-auto">
-        <div class="form-panel one">
-            <div class="form-header">
-                <h1>Nuevo Proveedor</h1>
-            </div>
-            <div class="form-content">
-                <form action="<?= BASE_DIR; ?>Login/login" method="POST">
-                    <div class="form-group">
-                        <label for="">Proveedor</label>
-                        <input type="text" name="" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Teléfono</label>
-                        <input type="" id="telefono" name="" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Dirección</label>
-                        <textarea name="" id="" cols="10" rows="2" required>
+    <main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
+        <!-- Form-->
+        <div class="form col-auto">
+            <div class="form-panel one">
+                <div class="form-header">
+                    <h1>Nuevo Proveedor</h1>
+                </div>
+                <div class="form-content">
+                    <form action="<?= BASE_DIR; ?>Proveedor/agregarProveedor" method="POST">
+                        <div class="form-group">
+                            <label for="">Proveedor</label>
+                            <input type="text" name="<?= PROV_NOMBRE ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Teléfono</label>
+                            <input type="" id="telefono" name="<?= PROV_TEL ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Dirección</label>
+                            <textarea name="<?= PROV_DIR ?>" id="" cols="10" rows="2" required>
 
                         </textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit">Agregar Proveedor</button>
-                    </div>
-                </form>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Agregar Proveedor</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<?php
-//seteamos el header de la pagina
-BaseLayout::renderFoot();
-?>
+    <?php
+    //seteamos el header de la pagina
+    BaseLayout::renderFoot();
+    ?>

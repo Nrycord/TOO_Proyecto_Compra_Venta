@@ -1,5 +1,6 @@
 <?php
 require_once "models/ProductoModel.php";
+require_once "models/ProveedorModel.php";
 class ProductosController
 {
 
@@ -21,10 +22,17 @@ class ProductosController
         return $productoModel->obtenerProducto();
     }
 
-    public function agregarProducto($nombre, $cantidad, $precioUnitario, $categoria, $idProveedor)
+    public function agregarProducto()
     {
-        $productoModel = new ProductoModel($nombre, $cantidad, $precioUnitario, $categoria, $idProveedor);
-        return $productoModel->agregarProducto();
+        if (isset($_POST[PROD_NOMBRE])) {
+            $productoModel = new ProductoModel(null, $_POST[PROD_NOMBRE], $_POST[PROD_CANTIDAD], $_POST[PROD_PRECIO], $_POST[PROD_CATEGORIA], $_POST[PROD_ID_PROV]);
+            $productoModel->agregarProducto();
+            header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
+        } else {
+            $proveedorModel = new ProveedorModel();
+            $proveedores = $proveedorModel->obtenerProveedores();
+            require_once "views/productNew.php";
+        }
     }
 
     public function modificarProducto($idProducto, $nombre, $cantidad, $precioUnitario, $categoria, $idProveedor)
