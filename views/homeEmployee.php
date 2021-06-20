@@ -36,7 +36,7 @@ BaseLayout::renderHead();
 
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Factura/emitirFactura">
                                 <div class="ssb-icon"> <i class="fas fa-notes-medical" aria-hidden="true"></i> </div>
                                 <h2 class="ssb-title"><strong>Realizar Reporte</strong></h2>
                             </a>
