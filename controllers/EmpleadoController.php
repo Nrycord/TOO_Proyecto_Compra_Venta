@@ -74,28 +74,27 @@ class EmpleadoController
                     if ($cliente[C_TIPO] == "Natural") {
                         $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
                         $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                        file_put_contents('facturaActual.json', $json_data);
-
-                        $docFactura = new FacturaController();
-                        $docFactura->emitirFactura();
                     } elseif ($cliente[C_TIPO] == "Fiscal") {
                         $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
                         $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                        file_put_contents('facturaActual.json', $json_data);
-
-                        $docFactura = new FacturaController();
-                        $docFactura->emitirFactura();
+                    } else {
+                        require_once "views/saleNew.php";
                     }
+                    file_put_contents('facturaActual.json', $json_data);
+                    $docFactura = new FacturaController();
+                    $docFactura->emitirFactura();
                 }
+
+                require_once "views/saleNew.php";
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes
-                //$employee->showSale();
+
                 $json_data = json_encode(null, JSON_PRETTY_PRINT); //Lo codificamos todo
                 file_put_contents('listaVentaProductos.json', $json_data); //Guardamos el valor del arreglo json que tenemos en un archivo
                 require_once "views/saleNew.php";
             }
         } else {
-            header('Location: ' . BASE_DIR . 'Login/login');
+            header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
         }
     }
 
