@@ -25,7 +25,7 @@ class ClientesController
     {
         if (isset($_POST[C_NOMBRE])) {
             $clienteModel = new ClienteModel(null, $_POST[C_NOMBRE], $_POST[C_APELLIDO], $_POST[C_DIR], $_POST[C_DUI], $_POST[C_TEL], $_POST[C_TIPO]);
-            $cliente = $clienteModel->agregarCliente();
+            $clienteModel->agregarCliente();
             header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
         } else {
             require_once "views/clientNew.php";

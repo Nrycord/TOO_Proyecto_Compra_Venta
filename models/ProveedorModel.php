@@ -67,12 +67,13 @@ class ProveedorModel extends Database
 
     public function agregarProveedor()
     {
-        $query = "INSERT INTO " . TBL_PROVEEDORES . " VALUES(:" . PROV_NOMBRE . ", :" . PROV_TEL . ", :" . PROV_DIR . ")";
+        $query = "INSERT INTO " . TBL_PROVEEDORES . " VALUES(:" . PROV_ID . ", :" . PROV_NOMBRE . ", :" . PROV_TEL . ", :" . PROV_DIR . ")";
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . PROD_NOMBRE, $this->getNombre());
-        $statement->bindValue(':' . PROD_CANTIDAD, $this->getTelefono());
-        $statement->bindValue(':' . PROD_PRECIO, $this->getDireccion());
+        $statement->bindValue(':' . PROV_ID, null);
+        $statement->bindValue(':' . PROV_NOMBRE, $this->getNombre());
+        $statement->bindValue(':' . PROV_TEL, $this->getTelefono());
+        $statement->bindValue(':' . PROV_DIR, $this->getDireccion());
 
         //"<h1>Error al agregar el registro!</h1>"
         $message = false;

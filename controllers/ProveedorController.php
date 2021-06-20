@@ -21,10 +21,15 @@ class ProveedorController
         return $proveedorModel->obtenerProveedor();
     }
 
-    public function agregarProveedor($nombre, $telefono, $direccion)
+    public function agregarProveedor()
     {
-        $proveedorModel = new ProveedorModel($nombre, $telefono, $direccion);
-        return $proveedorModel->agregarProveedor();
+        if (isset($_POST[PROV_NOMBRE])) {
+            $proveedorModel = new ProveedorModel(null, $_POST[PROV_NOMBRE], $_POST[PROV_TEL], $_POST[PROV_DIR]);
+            $proveedorModel->agregarProveedor();
+            header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
+        } else {
+            require_once "views/supplierNew.php";
+        }
     }
 
     public function modificarProveedor($idProveedor, $nombre, $telefono, $direccion)

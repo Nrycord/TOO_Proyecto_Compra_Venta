@@ -27,7 +27,7 @@ BaseLayout::renderHead();
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="square-service-block shadow">
-                            <a href="#">
+                            <a href="<?= BASE_DIR; ?>Administrador/mostrarFormularioCompra">
                                 <div class="ssb-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Realizar Compra</strong></h2>
                             </a>

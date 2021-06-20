@@ -11,7 +11,7 @@ BaseLayout::renderHead();
 ?>
 
 <head>
-    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/productTable.css">
+    <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/CuctTable.css">
 </head>
 
 <body>
@@ -44,29 +44,26 @@ BaseLayout::renderHead();
                             </tr>
                         </thead>
                         <tbody>
-                            <tr scope="row">
-                                <td>1</td>
-                                <td><a href="#">Fulano</a></td>
-                                <td>Mengano</td>
-                                <td>direcccion 1</td>
-                                <td>00000000-0</td>
-                                <td>0000-0000</td>
-                                <td>tipo</td>
-                                <td>
-                                    <div class="form-group">
-                                        <?php
-                                        if ($_COOKIE["Rol"] == "Empleado")
-                                            echo '<button type="submit" class="btn btn-outline-secondary btn-sm" style="width: 40px;"><i class="far fa-edit"></i></button>';
-                                        else if ($_COOKIE["Rol"] == "Administrador")
-                                            echo '<button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="fas fa-ban"></i></button>';
-                                        ?>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="spacer">
-                                <td colspan="100"></td>
-                            </tr>
-
+                            <?php
+                            foreach ($clientes as $cliente) {
+                                echo "<tr scope='row' id = " . $cliente[C_ID] . ">";
+                                echo "<td>" . $cliente[C_ID] . "</td>";
+                                echo "<td>" . $cliente[C_NOMBRE] . "</td>";
+                                echo "<td>" . $cliente[C_APELLIDO] . "</td>";
+                                echo "<td>" . $cliente[C_DIR] . "</td>";
+                                echo "<td>" . $cliente[C_DUI] . "</td>";
+                                echo "<td>" . $cliente[C_TEL] . "</td>";
+                                echo "<td>" . $cliente[C_TIPO] . "</td>";
+                                echo '<td><div class="form-group">';
+                                if ($_COOKIE["Rol"] == "Empleado")
+                                    echo '<button type="submit" class="btn btn-outline-secondary btn-sm" style="width: 40px;"><i class="far fa-edit"></i></button>';
+                                else if ($_COOKIE["Rol"] == "Administrador")
+                                    echo '<button type="submit" class="btn btn-outline-danger btn-sm" style="width: 40px;"><i class="fas fa-ban"></i></button>';
+                                echo '</td>';
+                                echo "</tr>";
+                                echo "<tr class='spacer'><td colspan='100'></td></tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
