@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2021 a las 22:11:08
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Tiempo de generación: 20-06-2021 a las 23:36:29
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_too_compra_venta`
 --
-CREATE DATABASE IF NOT EXISTS `bd_too_compra_venta` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `bd_too_compra_venta`;
 
 -- --------------------------------------------------------
 
@@ -66,10 +64,10 @@ CREATE TABLE `tbl_clientes` (
 --
 
 INSERT INTO `tbl_clientes` (`idCliente`, `nombre`, `apellido`, `direccion`, `dui`, `telefono`, `tipoCliente`) VALUES
-(1, 'Cliente1', 'Apellido1', 'Dir1', '123456789', 12345678, 'Natural'),
-(2, 'Cliente2', 'Apellido2', 'Dir2', '123456789', 12345678, 'Natural'),
-(3, 'Cliente3', 'Apellido3', 'Dir3', '123456789', 12345678, 'Fiscal'),
-(4, 'Cliente4', 'Apellido4', 'Dir4', '123456789', 12345678, 'Fiscal');
+(1, 'Juan', 'Cortez', 'col. el molino SM', '024522119', 12345678, 'Natural'),
+(2, 'Roxana', 'Gonzalez', 'ciudad barrios SM', '023456789', 12345678, 'Natural'),
+(3, 'Javier', 'Portillo', 'col urbeza SM', '013456789', 12345678, 'Fiscal'),
+(4, 'Ana', 'Rodriguez', 'col. hirleman SM', '043456789', 12345678, 'Fiscal');
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,10 @@ CREATE TABLE `tbl_empleados` (
 --
 
 INSERT INTO `tbl_empleados` (`idEmpleado`, `nombre`, `apellido`, `usuario`, `password`, `tipoUsuario`) VALUES
-(1, 'empleado1', 'apellido1', 'empleado', '1234', 'Empleado');
+(1, 'Rosa', 'Portillo', 'empleado1', '1234', 'Empleado'),
+(2, 'Esmeralda', 'Castillo', 'empleado2', '1234', 'Empleado'),
+(3, 'Rafael', 'Medrano', 'empleado3', '1234', 'Empleado'),
+(4, 'Jose', 'Rodriguez', 'empleado4', '1234', 'Empleado');
 
 -- --------------------------------------------------------
 
@@ -324,7 +325,7 @@ ALTER TABLE `tbl_compras`
 -- AUTO_INCREMENT de la tabla `tbl_empleados`
 --
 ALTER TABLE `tbl_empleados`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_factura_cf`
