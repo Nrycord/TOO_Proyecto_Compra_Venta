@@ -35,15 +35,15 @@ class ProductosController
         }
     }
 
-    public function modificarProducto($idProducto, $nombre, $cantidad, $precioUnitario, $categoria, $idProveedor)
+    public function modificarProducto()
     {
-        $productoModel = new ProductoModel($idProducto, $nombre, $cantidad, $precioUnitario, $categoria, $idProveedor);
+        $productoModel = new ProductoModel($_POST[PROD_ID], $_POST[PROD_NOMBRE], $_POST[PROD_CANTIDAD], $_POST[PROD_PRECIO], $_POST[PROD_CATEGORIA], $_POST[PROD_ID_PROV]);
         return $productoModel->modificarProducto();
     }
 
-    public function eliminarProducto($idProducto)
+    public function eliminarProducto()
     {
-        $productoModel = new ProductoModel($idProducto);
+        $productoModel = new ProductoModel($_POST[PROD_ID]);
         return $productoModel->eliminarProducto();
     }
 }

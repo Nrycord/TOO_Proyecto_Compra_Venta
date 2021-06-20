@@ -32,15 +32,16 @@ class ClientesController
         }
     }
 
-    public function modificarCliente($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)
+    public function modificarCliente()
     {
-        $clienteModel = new ClienteModel($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente);
+        $clienteModel = new ClienteModel($_POST[C_ID], $_POST[C_NOMBRE], $_POST[C_APELLIDO], $_POST[C_DIR], $_POST[C_DUI], $_POST[C_TEL], $_POST[C_TIPO]);
+        $clienteModel = new ClienteModel();
         return $clienteModel->modificarCliente();
     }
 
-    public function eliminarCliente($idCliente)
+    public function eliminarCliente()
     {
-        $clienteModel = new ClienteModel($idCliente);
+        $clienteModel = new ClienteModel($_POST[C_ID]);
         return $clienteModel->eliminarCliente();
     }
 }
