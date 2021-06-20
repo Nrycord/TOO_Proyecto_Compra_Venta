@@ -104,4 +104,11 @@ class EmpleadoModel extends Usuario
 
         return $message;
     }
+
+    public function showSale()
+    {
+        $saleDir = "saleNew.php";
+        
+        return $saleDir;
+    }
 }

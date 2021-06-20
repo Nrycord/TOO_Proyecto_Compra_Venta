@@ -95,12 +95,13 @@ class ClienteModel extends Database
 
         if ($statement->execute())
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
         return $result;
     }
 
     public function agregarCliente()
     { //Guarda un nombre a la base de datos
-        $query = "INSERT INTO " . TBL_CLIENTES . " VALUES(:" . C_NOMBRE . ", :" . C_APELLIDO . ", :" . C_DIR . ", :" . C_DUI . ", :" . C_TEL . ", :" . C_TIPO . ")";
+        $query = "INSERT INTO " . TBL_CLIENTES . " VALUES(:" . C_NOMBRE . ", :" . C_APELLIDO . ", :" . C_DIR . ", :" . C_DUI . ", :" . C_TEL . ", :" . C_TIPO;
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . C_NOMBRE, $this->getnombre());
@@ -162,7 +163,7 @@ class ClienteModel extends Database
 
     public function obtenerCliente()
     {
-        $query = "SELECT * FROM " . TBL_CLIENTES . " WHERE " . C_ID . " =: " . C_ID . " )";
+        $query = "SELECT * FROM " . TBL_CLIENTES . " WHERE " . C_ID . " = :" . C_ID;
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . C_ID, $this->getIdCliente());

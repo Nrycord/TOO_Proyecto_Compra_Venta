@@ -149,16 +149,33 @@ class ProductoModel extends Database
 
     public function obtenerProducto()
     {
-        $query = "SELECT * FROM " . TBL_PRODUCTOS . " WHERE " . PROD_ID . " =: " . PROD_ID . " )";
+        $query = "SELECT * FROM " . TBL_PRODUCTOS . " WHERE " . PROD_ID . " = :" . PROD_ID;
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . PROD_ID, $this->getIdProducto);
+        $statement->bindValue(':' . PROD_ID, $this->getIdProducto());
 
         //"<h1>Registro no encontrado!</h1>"
         $message = false;
 
         if ($statement->execute()) {
             $message = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return $message;
+    }
+
+    public function obtenerProductoPorNombre()
+    {
+        $query = "SELECT * FROM " . TBL_PRODUCTOS . " WHERE " . PROD_NOMBRE . " LIKE :" . PROD_NOMBRE;
+        $statement = $this->conn->prepare($query);
+
+        $statement->bindValue(':' . PROD_NOMBRE, $this->getNombre() . "%");
+
+        //"<h1>Registro no encontrado!</h1>"
+        $message = false;
+
+        if ($statement->execute()) {
+            $message = $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
         return $message;
