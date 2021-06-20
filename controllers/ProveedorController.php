@@ -32,15 +32,15 @@ class ProveedorController
         }
     }
 
-    public function modificarProveedor($idProveedor, $nombre, $telefono, $direccion)
+    public function modificarProveedor()
     {
-        $proveedorModel = new ProveedorModel($idProveedor, $nombre, $telefono, $direccion);
+        $proveedorModel = new ProveedorModel($_POST[PROV_ID], $_POST[PROV_NOMBRE], $_POST[PROV_TEL], $_POST[PROV_DIR]);
         return $proveedorModel->modificarProveedor();
     }
 
-    public function eliminarProveedor($idProveedor)
+    public function eliminarProveedor()
     {
-        $proveedorModel = new ProveedorModel($idProveedor);
+        $proveedorModel = new ProveedorModel($_POST[PROV_ID]);
         return $proveedorModel->eliminarProveedor();
     }
 }
