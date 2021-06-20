@@ -54,7 +54,7 @@ BaseLayout::renderHead();
 
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="square-service-block shadow">
-                            <a href="<?= BASE_DIR; ?>Cliente/agregarCliente">
+                            <a href="<?= BASE_DIR; ?>Clientes/agregarCliente">
                                 <div class="ssb-icon"><i class="fas fa-id-badge" aria-hidden="true"></i></div>
                                 <h2 class="ssb-title"><strong>Nuevo Cliente</strong></h2>
                             </a>

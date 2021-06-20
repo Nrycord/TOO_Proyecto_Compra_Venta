@@ -87,15 +87,16 @@ class EmpleadoController
                         $docFactura->emitirFactura();
                     }
                 }
+                require_once "views/saleNew.php";
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes
-                //$employee->showSale();
+
                 $json_data = json_encode(null, JSON_PRETTY_PRINT); //Lo codificamos todo
                 file_put_contents('listaVentaProductos.json', $json_data); //Guardamos el valor del arreglo json que tenemos en un archivo
                 require_once "views/saleNew.php";
             }
         } else {
-            header('Location: ' . BASE_DIR . 'Login/login');
+            header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
         }
     }
 
