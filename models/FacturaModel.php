@@ -204,7 +204,7 @@ class FacturaModel extends Database
             $statement->bindValue(':' . F_ESTADO, "Anulada");
 
             if ($statement->execute()) {
-                header('Location: ' . BASE_DIR . 'Home/showHome');
+                header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
             }
         } elseif ($tipoFactura == "Credito Fiscal") {
             $query = "UPDATE " . TBL_FACTURAS_CRTF . " SET " . CRTF_ESTADO . "=:" . CRTF_ESTADO . " WHERE " . CRTF_ID . "=:" . CRTF_ID;
@@ -214,7 +214,7 @@ class FacturaModel extends Database
             $statement->bindValue(':' . CRTF_ESTADO, "Anulada");
 
             if ($statement->execute()) {
-                header('Location: ' . BASE_DIR . 'Home/showHome');
+                header('Location: ' . BASE_DIR . 'Home/mostrarHomePage');
             }
         }
     }
