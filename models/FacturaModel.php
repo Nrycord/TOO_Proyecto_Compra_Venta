@@ -14,9 +14,17 @@ class FacturaModel extends Database
     private $total;
 
 
-    public function __construct()
+    public function __construct($idFactura = null, $nombreCliente = null, $duiCliente = null, $direccionCliente = null, $detalleFactura = null, $subtotal = null, $ivaRetenido = null, $total = null)
     {
         parent::__construct();
+        $this->setIdFactura($idFactura);
+        $this->setNombreCliente($nombreCliente);
+        $this->setDuiCliente($duiCliente);
+        $this->setDireccionCliente($direccionCliente);
+        $this->setDetalleFactura($detalleFactura);
+        $this->setSubTotal($subtotal);
+        $this->setIvaRetenido($ivaRetenido);
+        $this->setTotal($total);
     }
 
     public function getIdFactura()

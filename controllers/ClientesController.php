@@ -32,15 +32,15 @@ class ClientesController
         }
     }
 
-    public function modificarCliente($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)
+    public function modificarCliente()
     {
-        $clienteModel = new ClienteModel($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente);
+        $clienteModel = new ClienteModel();
         return $clienteModel->modificarCliente();
     }
 
-    public function eliminarCliente($idCliente)
+    public function eliminarCliente()
     {
-        $clienteModel = new ClienteModel($idCliente);
+        $clienteModel = new ClienteModel();
         return $clienteModel->eliminarCliente();
     }
 }

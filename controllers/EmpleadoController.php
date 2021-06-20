@@ -74,19 +74,17 @@ class EmpleadoController
                     if ($cliente[C_TIPO] == "Natural") {
                         $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
                         $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                        file_put_contents('facturaActual.json', $json_data);
-
-                        $docFactura = new FacturaController();
-                        $docFactura->emitirFactura();
                     } elseif ($cliente[C_TIPO] == "Fiscal") {
                         $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
                         $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                        file_put_contents('facturaActual.json', $json_data);
-
-                        $docFactura = new FacturaController();
-                        $docFactura->emitirFactura();
+                    } else {
+                        require_once "views/saleNew.php";
                     }
+                    file_put_contents('facturaActual.json', $json_data);
+                    $docFactura = new FacturaController();
+                    $docFactura->emitirFactura();
                 }
+
                 require_once "views/saleNew.php";
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes
