@@ -28,23 +28,24 @@ BaseLayout::renderHead();
                             <tr>
                                 <th scope="col">Fecha Venta</th>
                                 <th scope="col">Cliente</th>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Cantidad</th>
+                                <th scope="col">Dui Cliente</th>
+                                <th scope="col">Direcccion Cliente</th>
                                 <th scope="col">Monto Cancelado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr scope="row">
-                                <td>20/20/2020</td>
-                                <td>Fulano</td>
-                                <td>Mesa</td>
-                                <td>100</td>
-                                <td>250</td>
-                            </tr>
-                            <tr class="spacer">
-                                <td colspan="100"></td>
-                            </tr>
-
+                            <?php
+                            foreach ($reporteFacturas as $reporte) {
+                                echo "<tr scope='row'>";
+                                echo "<td>" . $reporte["fechaFacturacion"] . "</td>";
+                                echo "<td>" . $reporte["nombreCliente"] . "</td>";
+                                echo "<td>" . $reporte["duiCliente"] . "</td>";
+                                echo "<td>" . $reporte["direccionCliente"] . "</td>";
+                                echo "<td>" . $reporte["total"] . "</td>";
+                                echo "</tr>";
+                                echo '<tr class="spacer"><td colspan="100"></td></tr>';
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
