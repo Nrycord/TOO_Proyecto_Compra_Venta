@@ -18,7 +18,14 @@ BaseLayout::renderHead();
     <main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
         <div class="content">
             <div class="container mt-5">
-                <h1 class="table-header">Lista de Productos</h1>
+                <div class="row">
+                    <div class="col-auto">
+                        <h1 class="table-header">Lista de Productos</h1>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-primary" href="">Agregar producto</a>
+                    </div>
+                </div>
                 <div class="table-responsive custom-table-responsive" style="max-height: 80vh">
                     <table class="table table-hover custom-table">
                         <thead>

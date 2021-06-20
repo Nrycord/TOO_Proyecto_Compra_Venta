@@ -5,7 +5,6 @@ require_once "models/ClienteModel.php";
 class FacturaModel extends Database
 {
     private $idFactura;
-    private $fechaFacturacion;
     private $nombreCliente;
     private $duiCliente;
     private $direccionCliente;
@@ -28,18 +27,6 @@ class FacturaModel extends Database
     public function setIdFactura($idFactura)
     {
         $this->idFactura = $idFactura;
-
-        return $this;
-    }
-
-    public function getFechaFacturacion()
-    {
-        return $this->fechaFacturacion;
-    }
-
-    public function setFechaFacturacion($fechaFacturacion)
-    {
-        $this->fechaFacturacion = $fechaFacturacion;
 
         return $this;
     }
@@ -153,10 +140,9 @@ class FacturaModel extends Database
     public function generarFacturaConsumidorFinal()
     {
         //Guarda una factura a la base de datos
-        $query = "INSERT INTO " . TBL_FACTURAS_CONF . " VALUES(:" . F_FECHA_FACTURACION . ", :" . F_NOMBRE_CLIENTE . ", :" . F_DUI_CLIENTE . ", :" . F_DIRECCION_CLIENTE . ", :" . F_DETALLE_FACTURA . ", :" . F_SUBTOTAL . ", :" . F_IVA_RETENIDO .", :" . F_TOTAL . ", :" . F_ESTADO .")";
+        $query = "INSERT INTO " . TBL_FACTURAS_CONF . " VALUES(:" . F_NOMBRE_CLIENTE . ", :" . F_DUI_CLIENTE . ", :" . F_DIRECCION_CLIENTE . ", :" . F_DETALLE_FACTURA . ", :" . F_SUBTOTAL . ", :" . F_IVA_RETENIDO .", :" . F_TOTAL . ", :" . F_ESTADO .")";
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . F_FECHA_FACTURACION, $this->getFechaFacturacion());
         $statement->bindValue(':' . F_NOMBRE_CLIENTE, $this->getNombreCliente());
         $statement->bindValue(':' . F_DUI_CLIENTE, $this->getDuiCliente());
         $statement->bindValue(':' . F_DIRECCION_CLIENTE, $this->getDireccionCliente());
@@ -174,11 +160,10 @@ class FacturaModel extends Database
     public function generarFacturaCreditoFiscal()
     {
         //Guarda una factura a la base de datos
-        $query = "INSERT INTO " . TBL_FACTURAS_CRTF . " VALUES(:" . CRTF_FECHA_FACTURACION . ", :" . CRTF_NOMBRE_CLIENTE . ", :" . CRTF_DUI_CLIENTE . ", :" . CRTF_DIRECCION_CLIENTE . ", :" . CRTF_DETALLE_FACTURA . ", :" . CRTF_SUBTOTAL . ", :" . CRTF_IVA_RETENIDO .", :" . CRTF_TOTAL . ", :" . CRTF_ESTADO .")";
+        $query = "INSERT INTO " . TBL_FACTURAS_CRTF . " VALUES(:" . CRTF_NOMBRE_CLIENTE . ", :" . CRTF_DUI_CLIENTE . ", :" . CRTF_DIRECCION_CLIENTE . ", :" . CRTF_DETALLE_FACTURA . ", :" . CRTF_SUBTOTAL . ", :" . CRTF_IVA_RETENIDO .", :" . CRTF_TOTAL . ", :" . CRTF_ESTADO .")";
         $statement = $this->conn->prepare($query);
 
         $statement->bindValue(':' . CRTF_NOMBRE_CLIENTE, $this->getNombreCliente());
-        $statement->bindValue(':' . CRTF_FECHA_FACTURACION, $this->getFechaFacturacion());
         $statement->bindValue(':' . CRTF_DUI_CLIENTE, $this->getDuiCliente());
         $statement->bindValue(':' . CRTF_DIRECCION_CLIENTE, $this->getDireccionCliente());
         $statement->bindValue(':' . CRTF_DETALLE_FACTURA, $this->getDetalleFactura());
