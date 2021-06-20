@@ -9,59 +9,56 @@ require_once "render/BaseLayout.php";
 BaseLayout::renderHead();
 
 ?>
+
 <head>
     <link rel="stylesheet" href="<?= BASE_DIR; ?>/assets/css/form.css">
 </head>
 
 <body>
 
-<main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
-    <!-- Form-->
-    <div class="form col-auto">
-        <div class="form-panel one">
-            <div class="form-header">
-                <h1>Nuevo Producto</h1>
-            </div>
-            <div class="form-content">
-                <form action="<?= BASE_DIR; ?>Login/login" method="POST">
-                    <div class="form-group">
-                        <label for="">Producto</label>
-                        <input type="text" name="" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Cantidad</label>
-                        <input type="number" name="" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Precio Unitario</label>
-                        <input type="text" id="precio" name="" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Categoria</label>
-                        <select type="text" name="" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Proveedor</label>
-                        <select type="text" name="" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit">Agregar Producto</button>
-                    </div>
-                </form>
+    <main class="m-0 px-3 vh-100 row justify-content-center align-items-center">
+        <!-- Form-->
+        <div class="form col-auto">
+            <div class="form-panel one">
+                <div class="form-header">
+                    <h1>Nuevo Producto</h1>
+                </div>
+                <div class="form-content">
+                    <form action="<?= BASE_DIR; ?>Productos/agregarProducto" method="POST">
+                        <div class="form-group">
+                            <label for="">Producto</label>
+                            <input type="text" name="<?= PROD_NOMBRE ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cantidad</label>
+                            <input type="number" name="<?= PROD_CANTIDAD ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Precio Unitario</label>
+                            <input type="text" id="precio" name="<?= PROD_PRECIO ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Categoria</label>
+                            <input type="text" id="categoria" name="<?= PROD_CATEGORIA ?>" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Proveedor</label>
+                            <select type="text" name="<?= PROD_ID_PROV ?>" required>
+                                <?php foreach ($proveedores as $proveedor) {
+                                    echo "<option value = " . $proveedor[PROV_ID] . ">" . $proveedor[PROV_NOMBRE] . "</option>";
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Agregar Producto</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<?php
-//seteamos el header de la pagina
-BaseLayout::renderFoot();
-?>
+    <?php
+    //seteamos el header de la pagina
+    BaseLayout::renderFoot();
+    ?>

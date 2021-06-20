@@ -23,18 +23,10 @@ BaseLayout::renderHead();
             <div class="form col-auto">
                 <div class="form-panel one">
                     <div class="form-header">
-                        <h1>Realiza una nueva venta</h1>
+                        <h1>Realiza una nueva compra</h1>
                     </div>
                     <div class="form-content">
-                        <form action="<?= BASE_DIR; ?>Empleado/mostrarFormularioVenta" method="POST">
-                            <div class="form-group">
-                                <label for="<?= C_ID ?>">Selecciona un cliente</label>
-                                <select name="<?= C_ID ?>" required="required">
-                                    <?php foreach ($listaClientes as $cliente) {
-                                        echo "<option value = " . $cliente[C_ID] . ">" . $cliente[C_NOMBRE] . " " . $cliente[C_APELLIDO]  . " " . $cliente[C_TIPO] . "</option>";
-                                    } ?>
-                                </select>
-                            </div>
+                        <form action="<?= BASE_DIR; ?>Empleado/mostrarFormularioCompra" method="POST">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
@@ -49,7 +41,7 @@ BaseLayout::renderHead();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" onclick="reloadInfo()" class="button-search">Realizar Venta</button>
+                                <button type="submit" onclick="reloadInfo()" class="button-search">Realizar Compra</button>
                             </div>
                         </form>
                     </div>
@@ -74,13 +66,13 @@ BaseLayout::renderHead();
             reloadPresupuesto();
             producto = document.getElementById('filtroProducto').value; //Tomamos el texto para el filtro
             //Ejecutamos una funcion nueva, donde le pasamos el nombre del producto a buscar
-            $('#tablaProductos').load('<?= BASE_DIR ?>Empleado/tablaProductos&tipo="venta"&producto=' + producto);
+            $('#tablaProductos').load('<?= BASE_DIR ?>Administrador/tablaProductos&tipo="compra"&producto=' + producto);
         }
 
 
         function reloadPresupuesto() {
             //Ejecutamos una funcion nueva, donde le pasamos el nombre del producto a buscar
-            $('#tablaPresupuesto').load('<?= BASE_DIR ?>Empleado/tablaPresupuesto&tipo="venta"');
+            $('#tablaPresupuesto').load('<?= BASE_DIR ?>Administrador/tablaPresupuesto&tipo="compra"');
         }
     </script>
 
