@@ -13,12 +13,6 @@ class EmpleadoController
         //Aqui requerimos el modelo
     }
 
-    public function autenticarEmpleado()
-    {
-
-        //Agregar definicion
-    }
-
     public function realizarVenta($listaProductos)
     {
         $this->productos = $listaProductos;
@@ -146,8 +140,8 @@ class EmpleadoController
             if (isset($_POST["idEliminar"])) {
                 var_dump($productos);
             }
-            // Only keep unique values, by using array_unique with SORT_REGULAR as flag.
-            // We're using array_values here, to only retrieve the values and not the keys.
+            // Solo mantenemos los valores unicos
+            // Se utiliza el array values para obtener los valores y no las claves
             // Eliminamos los campos repetidos en el arreglo
             $array = array_values(array_unique($productos, SORT_REGULAR));
             $result = json_encode($array, JSON_PRETTY_PRINT); //Codificamos
