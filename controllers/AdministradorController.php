@@ -14,6 +14,35 @@ class AdministradorController
 
     public function mostrarFormularioCompra()
     {
+        require_once "models/ProductoModel.php";
+        $productoBD = new ProductoModel();
+
+        require_once "models/CompraModel.php";
+        $compra = new CompraModel();
+
+        if (isset($_POST["post"])) {
+            $subtotal = 0;
+            //Seleccionamos todos los productos
+            $data_results = file_get_contents(BASE_DIR . 'listaCompraProductos.json');
+            $productos = json_decode($data_results, true);
+            //Generar la factura
+            $compra->setdetalleCompra($data_results);
+            if ($productos != null) {
+                foreach ($productos as $producto) {
+                    $productoBD->setIdProducto($producto[PROD_ID]);
+                    $prodAux = $productoBD->obtenerProducto();
+                    $cantidadActual = $prodAux[PROD_CANTIDAD] + $producto[PROD_CANTIDAD];
+                    $productoBD = new ProductoModel($prodAux[PROD_ID], $prodAux[PROD_NOMBRE], $cantidadActual, $prodAux[PROD_PRECIO], $prodAux[PROD_CATEGORIA], $prodAux[PROD_ID_PROV]);
+                    $productoBD->modificarProducto();
+                    $totalProducto = $producto[PROD_CANTIDAD] * $producto[PROD_PRECIO];
+                    $subtotal += $totalProducto;
+                    $impuestos = $subtotal * (13 / 100);
+                    $total = $subtotal + $impuestos;
+                }
+                $compra->setTotal($total);
+                $compra->agregarCompra();
+            }
+        }
         $this->realizarPresupuesto();
         $json_data = json_encode(null, JSON_PRETTY_PRINT); //Lo codificamos todo
         file_put_contents('listaCompraProductos.json', $json_data); //Guardamos el valor del arreglo json que tenemos en un archivo

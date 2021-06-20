@@ -63,13 +63,17 @@
     }
 
     function limiter(sender) {
-        let min = sender.min;
-        let max = sender.max;
-        let value = parseInt(sender.value);
-        if (value > max) {
-            sender.value = min;
-        } else if (value < min) {
-            sender.value = min;
+        var tipo = "<?= $tipo ?>";
+
+        if (tipo == "venta") {
+            let min = sender.min;
+            let max = sender.max;
+            let value = parseInt(sender.value);
+            if (value > max) {
+                sender.value = min;
+            } else if (value < min) {
+                sender.value = min;
+            }
         }
     }
 </script>

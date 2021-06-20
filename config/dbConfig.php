@@ -86,3 +86,10 @@ define('CRTF_SUBTOTAL', 'subTotal');
 define('CRTF_IVA_RETENIDO', 'ivaRetenido');
 define('CRTF_TOTAL', 'total');
 define('CRTF_ESTADO', 'estado');
+
+//Nombre de la tabla 6
+define('TBL_COMPRAS', 'tbl_compras');
+//Campos de la tabla 6
+define('COMPRAS_ID', 'idCompra');
+define('COMPRAS_DETALLE', 'detalleCompra');
+define('COMPRAS_TOTAL', 'total');
