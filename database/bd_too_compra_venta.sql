@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2021 a las 10:30:50
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.30
+-- Tiempo de generación: 20-06-2021 a las 21:12:55
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_too_compra_venta`
 --
-CREATE DATABASE IF NOT EXISTS `bd_too_compra_venta` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `bd_too_compra_venta`;
 
 -- --------------------------------------------------------
 
@@ -151,10 +149,24 @@ CREATE TABLE `tbl_productos` (
 --
 
 INSERT INTO `tbl_productos` (`idProducto`, `nombre`, `cantidad`, `precioUnitario`, `categoria`, `idProveedor`) VALUES
-(2, 'Producto1', 20, 25, 'Categoria1', 1),
-(3, 'Producto2', 50, 100, 'Categoria2', 1),
-(4, 'Producto3', 10, 20, 'Categoria3', 2),
-(5, 'Producto4', 100, 50, 'Categoria4', 3);
+(2, 'puerta roble golden', 20, 75, 'Puertas', 1),
+(3, 'puerta roble roja', 50, 75, 'Puertas', 1),
+(4, 'puerta roble blanca', 60, 65, 'Puertas', 2),
+(5, 'puerta roble caoba', 100, 69, 'Puertas', 3),
+(6, 'Cama King', 15, 450, 'Dormitorio', 1),
+(7, 'Cama Queen', 15, 460, 'Dormitorio', 1),
+(8, 'Cama King Royal', 13, 450, 'Dormitorio', 2),
+(9, 'Cama Queen Royal', 20, 460, 'Dormitorio', 3),
+(10, 'Cama Matrimonial', 15, 390, 'Dormitorio', 1),
+(11, 'Camarote full blanco', 12, 450, 'Dormitorio', 2),
+(12, 'Camarote full negro', 23, 460, 'Dormitorio', 2),
+(13, 'Gavetero negro', 17, 460, 'Dormitorio', 1),
+(14, 'Gavetero negro', 16, 356, 'Dormitorio', 2),
+(15, 'Gavetero blanco ', 15, 410, 'Dormitorio', 1),
+(16, 'Mueble cocina Caoba', 27, 599, 'Cocina', 4),
+(17, 'Mueble cocina Vidri', 23, 599, 'Cocina', 4),
+(18, '\r\njuego comedor 4p', 24, 499, 'Comedor', 1),
+(19, '\r\njuego comedor 6p', 24, 499, 'Comedor', 1);
 
 -- --------------------------------------------------------
 
@@ -197,10 +209,10 @@ CREATE TABLE `tbl_proveedores` (
 --
 
 INSERT INTO `tbl_proveedores` (`idProveedor`, `nombre`, `telefono`, `direccion`) VALUES
-(1, 'Proveedor1', '12345678', 'Dir1'),
-(2, 'Proveedor2', '12345678', 'Dir2'),
-(3, 'Proveedor3', '12345678', 'Dir3'),
-(4, 'Proveedor4', '12345678', 'Dir4');
+(1, 'Almacenes Esmeralda', '12345678', 'Col San Benito,Zacateculoca,La Paz'),
+(2, 'Arthany', '12345678', 'Calle principal 14 av, Chalatenango, Chalatenango'),
+(3, 'Pretty Furniture', '12345678', 'Calle Esmeralda, San Salvador, San Salvador'),
+(4, 'Home Furniture', '12345678', 'Av. Roosevelt Norte,San Miguel,San Miguel');
 
 --
 -- Índices para tablas volcadas
@@ -295,7 +307,7 @@ ALTER TABLE `tbl_factura_crtf`
 -- AUTO_INCREMENT de la tabla `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_producto_proveedor`
