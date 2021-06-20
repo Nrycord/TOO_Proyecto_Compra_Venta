@@ -23,8 +23,11 @@ class ClientesController
 
     public function agregarCliente($nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)
     {
-        $clienteModel = new ClienteModel(null, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente);
-        return $clienteModel->agregarCliente();
+        if (isset($_POST[C_ID])) {
+            $clienteModel = new ClienteModel(null, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente);
+        } else {
+            require_once "views/clientNew.php";
+        }
     }
 
     public function modificarCliente($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)

@@ -130,7 +130,8 @@ class EmpleadoController
         //Decodificamos estos en una arreglo
         $productos = json_decode($data_results, true);
         if ($productos != null) {
-            if (isset($_POST["idProducto"])) {
+            if (isset($_POST["idEliminar"])) {
+                var_dump($productos);
             }
             // Only keep unique values, by using array_unique with SORT_REGULAR as flag.
             // We're using array_values here, to only retrieve the values and not the keys.
