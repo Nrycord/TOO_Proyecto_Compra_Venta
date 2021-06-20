@@ -26,7 +26,8 @@ BaseLayout::renderHead();
                         <h1>Realiza una nueva compra</h1>
                     </div>
                     <div class="form-content">
-                        <form action="<?= BASE_DIR; ?>Empleado/mostrarFormularioCompra" method="POST">
+                        <form action="<?= BASE_DIR; ?>Administrador/mostrarFormularioCompra" method="POST">
+                            <input type="hidden" name="post" id="post" />
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">

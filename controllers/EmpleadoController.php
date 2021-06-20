@@ -56,34 +56,36 @@ class EmpleadoController
                 $facturaModel->setDuiCliente($cliente[C_DUI]);
                 $facturaModel->setDireccionCliente($cliente[C_DIR]);
                 $facturaModel->setDetalleFactura($data_results);
-                foreach ($productos as $producto) {
-                    $productoBD->setIdProducto($producto[PROD_ID]);
-                    $prodAux = $productoBD->obtenerProducto();
-                    $cantidadActual = $prodAux[PROD_CANTIDAD] - $producto[PROD_CANTIDAD];
-                    $productoBD = new ProductoModel($prodAux[PROD_ID], $prodAux[PROD_NOMBRE], $cantidadActual, $prodAux[PROD_PRECIO], $prodAux[PROD_CATEGORIA], $prodAux[PROD_ID_PROV]);
-                    $productoBD->modificarProducto();
-                    $totalProducto = $producto[PROD_CANTIDAD] * $producto[PROD_PRECIO];
-                    $subtotal += $totalProducto;
-                    $impuestos = $subtotal * (13 / 100);
-                    $total = $subtotal + $impuestos;
-                }
-                $facturaModel->setSubTotal($subtotal);
-                $facturaModel->setIvaRetenido($impuestos);
-                $facturaModel->setTotal($total);
-                if ($cliente[C_TIPO] == "Natural") {
-                    $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
-                    $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                    file_put_contents('facturaActual.json', $json_data);
+                if ($productos != null) {
+                    foreach ($productos as $producto) {
+                        $productoBD->setIdProducto($producto[PROD_ID]);
+                        $prodAux = $productoBD->obtenerProducto();
+                        $cantidadActual = $prodAux[PROD_CANTIDAD] - $producto[PROD_CANTIDAD];
+                        $productoBD = new ProductoModel($prodAux[PROD_ID], $prodAux[PROD_NOMBRE], $cantidadActual, $prodAux[PROD_PRECIO], $prodAux[PROD_CATEGORIA], $prodAux[PROD_ID_PROV]);
+                        $productoBD->modificarProducto();
+                        $totalProducto = $producto[PROD_CANTIDAD] * $producto[PROD_PRECIO];
+                        $subtotal += $totalProducto;
+                        $impuestos = $subtotal * (13 / 100);
+                        $total = $subtotal + $impuestos;
+                    }
+                    $facturaModel->setSubTotal($subtotal);
+                    $facturaModel->setIvaRetenido($impuestos);
+                    $facturaModel->setTotal($total);
+                    if ($cliente[C_TIPO] == "Natural") {
+                        $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
+                        $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
+                        file_put_contents('facturaActual.json', $json_data);
 
-                    $docFactura = new FacturaController();
-                    $docFactura->emitirFactura();
-                } elseif ($cliente[C_TIPO] == "Fiscal") {
-                    $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
-                    $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
-                    file_put_contents('facturaActual.json', $json_data);
+                        $docFactura = new FacturaController();
+                        $docFactura->emitirFactura();
+                    } elseif ($cliente[C_TIPO] == "Fiscal") {
+                        $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
+                        $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
+                        file_put_contents('facturaActual.json', $json_data);
 
-                    $docFactura = new FacturaController();
-                    $docFactura->emitirFactura();
+                        $docFactura = new FacturaController();
+                        $docFactura->emitirFactura();
+                    }
                 }
             } else {
                 $listaClientes = $listaClientes->obtenerClientes(); //Obtenemos la lista de todos los clientes

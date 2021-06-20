@@ -1,18 +1,1 @@
-[
-    {
-        "idProducto": "2",
-        "nombre": "Producto1",
-        "cantidad": "1",
-        "precioUnitario": "25",
-        "categoria": "Categoria1",
-        "idProveedor": "1"
-    },
-    {
-        "idProducto": "3",
-        "nombre": "Producto2",
-        "cantidad": "1",
-        "precioUnitario": "100",
-        "categoria": "Categoria2",
-        "idProveedor": "1"
-    }
-]
+null

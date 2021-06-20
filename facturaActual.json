@@ -1,12 +1,12 @@
 {
-    "idFactura": "17",
-    "fechaFacturacion": "2021-06-20 12:45:47",
+    "idFactura": "5",
+    "fechaFacturacion": "2021-06-20 13:10:34",
     "nombreCliente": "Cliente1",
     "duiCliente": "123456789",
     "direccionCliente": "Dir1",
-    "detalleFactura": "[\n    {\n        \"idProducto\": \"2\",\n        \"nombre\": \"Producto1\",\n        \"cantidad\": \"1\",\n        \"precioUnitario\": \"25\",\n        \"categoria\": \"Categoria1\",\n        \"idProveedor\": \"1\"\n    },\n    {\n        \"idProducto\": \"3\",\n        \"nombre\": \"Producto2\",\n        \"cantidad\": \"1\",\n        \"precioUnitario\": \"100\",\n        \"categoria\": \"Categoria2\",\n        \"idProveedor\": \"1\"\n    }\n]",
-    "subTotal": "125.00",
-    "ivaRetenido": "16.25",
-    "total": "141.25",
+    "detalleFactura": "[\n    {\n        \"idProducto\": \"3\",\n        \"nombre\": \"Producto2\",\n        \"cantidad\": \"1\",\n        \"precioUnitario\": \"100\",\n        \"categoria\": \"Categoria2\",\n        \"idProveedor\": \"1\"\n    },\n    {\n        \"idProducto\": \"2\",\n        \"nombre\": \"Producto1\",\n        \"cantidad\": \"1\",\n        \"precioUnitario\": \"10\",\n        \"categoria\": \"Categoria1\",\n        \"idProveedor\": \"2\"\n    }\n]",
+    "subTotal": "110.00",
+    "ivaRetenido": "14.30",
+    "total": "124.30",
     "estado": "Emitida"
 }
