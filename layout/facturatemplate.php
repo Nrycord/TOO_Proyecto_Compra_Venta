@@ -1,9 +1,12 @@
 <?php
 $clienteActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/clienteActual.json');
 $client = json_decode($clienteActual, true);
+$idFacturaActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/facturaActual.json');
+$idFact = json_decode($idFacturaActual, true);
 $facturaActual = file_get_contents('http://localhost/TOO_Proyecto_Compra_Venta/listaVentaProductos.json');
 $productos = json_decode($facturaActual, true);
-$idFactura = 1;
+
+$idFactura = $idFact["idFactura"];
 $fecha = date("d-m-Y");
 
 if($client["tipoCliente"] == "Natural"){
@@ -39,9 +42,8 @@ $porcentajeImpuestos = 13;
                         <br>
                         <?php echo $fecha ?>
                         <br>
-                        <strong><?php echo $tipoFactura ?> No.</strong>
-                        <br>
-                        <?php echo $idFactura ?>
+                        <strong><?php echo $tipoFactura ?> No. </strong>
+                        <strong class="text-danger"><?php echo $idFactura ?></strong>
                     </th>
                 </tr>
             </thead>

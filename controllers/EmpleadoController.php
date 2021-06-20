@@ -70,12 +70,16 @@ class EmpleadoController
                 $facturaModel->setIvaRetenido($impuestos);
                 $facturaModel->setTotal($total);
                 if($cliente[C_TIPO] == "Natural"){
-                    $facturaModel->generarFacturaConsumidorFinal();
+                    $facturaDataCF = $facturaModel->generarFacturaConsumidorFinal();
+                    $json_data = json_encode($facturaDataCF, JSON_PRETTY_PRINT); //Lo codificamos todo
+                    file_put_contents('facturaActual.json', $json_data);
 
                     $docFactura = new FacturaController();
                     $docFactura->emitirFactura();
                 }elseif($cliente[C_TIPO] == "Fiscal"){
-                    $facturaModel->generarFacturaCreditoFiscal();
+                    $facturaDataCTF = $facturaModel->generarFacturaCreditoFiscal();
+                    $json_data = json_encode($facturaDataCTF, JSON_PRETTY_PRINT); //Lo codificamos todo
+                    file_put_contents('facturaActual.json', $json_data);
 
                     $docFactura = new FacturaController();
                     $docFactura->emitirFactura();
