@@ -1,8 +1,7 @@
 <?php
 require_once "database/Database.php";
-require_once "models/Usuario.php";
 
-class CompraModel extends Usuario
+class CompraModel extends Database
 {
     private $idCompra;
     private $detalleCompra;
