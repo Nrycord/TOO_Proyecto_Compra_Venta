@@ -49,7 +49,7 @@ BaseLayout::renderHead();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" onclick="reloadInfo()" class="button-search">Realizar Compra</button>
+                                <button type="submit" onclick="reloadInfo()" class="button-search">Realizar Venta</button>
                             </div>
                         </form>
                     </div>

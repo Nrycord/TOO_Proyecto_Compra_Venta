@@ -85,7 +85,7 @@ class EmpleadoController
             //Tomamos los datos de la bd del producto correpsondiente
             $productoModel = new ProductoModel($_POST["idProducto"]);
             $productoSeleccionado = $productoModel->obtenerProducto();
-
+            $productoSeleccionado[PROD_CANTIDAD] = $_POST["cantidad"];
             //Tomamos los datos actuales de nuestro arreglo
             $data_results = file_get_contents(BASE_DIR . 'listaVentaProductos.json');
 
