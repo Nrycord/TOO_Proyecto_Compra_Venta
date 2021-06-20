@@ -1,5 +1,5 @@
 <?php
-
+require_once "models/ProveedorModel.php";
 class ProveedorController
 {
 
@@ -11,7 +11,8 @@ class ProveedorController
     public function mostrarListaProveedores()
     {
         $proveedorModel = new ProveedorModel();
-        return $proveedorModel->obtenerProveedores();
+        $proveedores = $proveedorModel->obtenerProveedores();
+        require_once "views/supplierList.php";
     }
 
     public function obtenerProveedor($idProveedor)

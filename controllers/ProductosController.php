@@ -1,5 +1,5 @@
 <?php
-
+require_once "models/ProductoModel.php";
 class ProductosController
 {
 
@@ -11,7 +11,8 @@ class ProductosController
     public function mostrarListaProductos()
     {
         $productoModel = new ProductoModel();
-        return $productoModel->obtenerProductos();
+        $productos = $productoModel->obtenerProductos();
+        require_once "views/productList.php";
     }
 
     public function obtenerProducto($idProducto)
