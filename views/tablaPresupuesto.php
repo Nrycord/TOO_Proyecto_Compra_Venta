@@ -19,7 +19,7 @@
                     <tbody>
                         <?php
                         foreach ($productos as $producto) {
-                            echo "<tr scope='row'>";
+                            echo "<tr scope='row' id = " . $producto[PROD_ID] . ">";
                             echo "<td>" . $producto[PROD_ID] . "</td>";
                             echo "<td>" . $producto[PROD_NOMBRE] . "</td>";
                             echo "<td>" . $producto[PROD_CANTIDAD] . "</td>";
@@ -39,15 +39,15 @@
 </div>
 
 <script>
-    function borrarCampo(idProducto) {
+    function borrarCampo(idEliminar) {
         $.ajax({
             type: "POST",
             url: '<?= BASE_DIR ?>Empleado/tablaPresupuesto',
             data: {
-                idProducto: idProducto
+                idEliminar: idEliminar
             },
             success: function() {
-                $("#" + idProducto).remove();
+                $("#" + idEliminar).remove();
                 alert("Producto eliminado de la lista");
             }
 

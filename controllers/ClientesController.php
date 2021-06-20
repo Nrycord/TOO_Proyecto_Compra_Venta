@@ -21,10 +21,15 @@ class ClientesController
         return $clienteModel->obtenerCliente();
     }
 
-    public function agregarCliente($nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)
+    public function agregarCliente()
     {
-        $clienteModel = new ClienteModel(null, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente);
-        return $clienteModel->agregarCliente();
+        if (isset($_POST[C_NOMBRE])) {
+            $clienteModel = new ClienteModel(null, $_POST[C_NOMBRE], $_POST[C_APELLIDO], $_POST[C_DIR], $_POST[C_DUI], $_POST[C_TEL], $_POST[C_TIPO]);
+            $cliente = $clienteModel->agregarCliente();
+            header('Location: ' . BASE_DIR . 'Home/mostrarHomePage'); //Redirigimos a Home
+        } else {
+            require_once "views/clientNew.php";
+        }
     }
 
     public function modificarCliente($idCliente, $nombre, $apellido, $direccion, $dui, $telefono, $tipoCliente)

@@ -169,7 +169,7 @@ class ProductoModel extends Database
         $query = "SELECT * FROM " . TBL_PRODUCTOS . " WHERE " . PROD_NOMBRE . " LIKE :" . PROD_NOMBRE;
         $statement = $this->conn->prepare($query);
 
-        $statement->bindValue(':' . PROD_NOMBRE, $this->getNombre() . "%");
+        $statement->bindValue(':' . PROD_NOMBRE, "%" . $this->getNombre() . "%");
 
         //"<h1>Registro no encontrado!</h1>"
         $message = false;

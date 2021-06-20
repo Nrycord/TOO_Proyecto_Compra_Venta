@@ -23,7 +23,8 @@ BaseLayout::renderHead();
                         <h1 class="table-header">Lista de Productos</h1>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary" href="">Agregar producto</a>
+                        <?php if ($_COOKIE["Rol"] == "Administrador")
+                            echo '<a class="btn btn-primary" href="' . BASE_DIR . 'Productos/AgregarProveedor">Agregar producto</a>'; ?>
                     </div>
                 </div>
                 <div class="table-responsive custom-table-responsive" style="max-height: 80vh">

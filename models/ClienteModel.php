@@ -101,9 +101,9 @@ class ClienteModel extends Database
 
     public function agregarCliente()
     { //Guarda un nombre a la base de datos
-        $query = "INSERT INTO " . TBL_CLIENTES . " VALUES(:" . C_NOMBRE . ", :" . C_APELLIDO . ", :" . C_DIR . ", :" . C_DUI . ", :" . C_TEL . ", :" . C_TIPO;
+        $query = "INSERT INTO " . TBL_CLIENTES . " VALUES(:" . C_ID . ", :" . C_NOMBRE . ", :" . C_APELLIDO . ", :" . C_DIR . ", :" . C_DUI . ", :" . C_TEL . ", :" . C_TIPO . ")";
         $statement = $this->conn->prepare($query);
-
+        $statement->bindValue(':' . C_ID, null);
         $statement->bindValue(':' . C_NOMBRE, $this->getnombre());
         $statement->bindValue(':' . C_APELLIDO, $this->getapellido());
         $statement->bindValue(':' . C_DIR, $this->getdireccion());
@@ -116,6 +116,11 @@ class ClienteModel extends Database
 
         if ($statement->execute()) {
             $result = "<h1>Registro agregado con éxito!</h1>";
+
+            //$query = "SELECT * FROM " . TBL_CLIENTES . " ORDER BY  " . C_ID . " DESC LIMIT 1";
+            //$statement = $this->conn->prepare($query);
+            //$statement->execute();
+            //$result = $statement->fetch(PDO::FETCH_ASSOC);
         }
 
         return $result;

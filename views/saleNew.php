@@ -31,7 +31,7 @@ BaseLayout::renderHead();
                                 <label for="<?= C_ID ?>">Selecciona un cliente</label>
                                 <select name="<?= C_ID ?>" required="required">
                                     <?php foreach ($listaClientes as $cliente) {
-                                        echo "<option value = " . $cliente[C_ID] . ">" . $cliente[C_NOMBRE] . " " . $cliente[C_APELLIDO]  . "</option>";
+                                        echo "<option value = " . $cliente[C_ID] . ">" . $cliente[C_NOMBRE] . " " . $cliente[C_APELLIDO]  . " " . $cliente[C_TIPO] . "</option>";
                                     } ?>
                                 </select>
                             </div>
