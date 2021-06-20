@@ -12,12 +12,6 @@ class AdministradorController
         //Aqui requerimos el modelo
     }
 
-    public function autenticarAdmin()
-    {
-
-        //Agregar definicion
-    }
-
     public function mostrarFormularioCompra()
     {
         $this->realizarPresupuesto();

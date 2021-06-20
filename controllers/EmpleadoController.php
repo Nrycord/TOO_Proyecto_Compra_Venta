@@ -13,12 +13,6 @@ class EmpleadoController
         //Aqui requerimos el modelo
     }
 
-    public function autenticarEmpleado()
-    {
-
-        //Agregar definicion
-    }
-
     public function realizarVenta($listaProductos)
     {
         $this->productos = $listaProductos;
@@ -156,7 +150,6 @@ class EmpleadoController
             if (isset($_POST["idEliminar"])) {
                 var_dump($productos);
             }
-
             // Eliminamos los campos repetidos en el arreglo
             $array = array_values(array_unique($productos, SORT_REGULAR));
             $result = json_encode($array, JSON_PRETTY_PRINT); //Codificamos
