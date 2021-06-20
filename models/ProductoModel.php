@@ -89,9 +89,10 @@ class ProductoModel extends Database
 
     public function agregarProducto()
     {
-        $query = "INSERT INTO " . TBL_PRODUCTOS . " VALUES(:" . PROD_NOMBRE . ", :" . PROD_CANTIDAD . ", :" . PROD_PRECIO . ", :" . PROD_CATEGORIA . ", :" . PROD_ID_PROV . ")";
+        $query = "INSERT INTO " . TBL_PRODUCTOS . " VALUES(:" . PROD_ID . ", :" . PROD_NOMBRE . ", :" . PROD_CANTIDAD . ", :" . PROD_PRECIO . ", :" . PROD_CATEGORIA . ", :" . PROD_ID_PROV . ")";
         $statement = $this->conn->prepare($query);
 
+        $statement->bindValue(':' . PROD_ID, null);
         $statement->bindValue(':' . PROD_NOMBRE, $this->getNombre());
         $statement->bindValue(':' . PROD_CANTIDAD, $this->getCantidad());
         $statement->bindValue(':' . PROD_PRECIO, $this->getPrecioUnitario());
