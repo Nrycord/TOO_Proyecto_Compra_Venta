@@ -24,7 +24,7 @@ BaseLayout::renderHead();
                         <h1 class="table-header">Lista de Proveedores</h1>
                     </div>
                     <div class="col-auto">
-                        <a class="btn btn-primary" href="">Agregar proveedor</a>
+                        <a class="btn btn-primary" href="<?= BASE_DIR ?>Proveedores/agegarProveedor">Agregar proveedor</a>
                     </div>
                 </div>
                 <div class="table-responsive custom-table-responsive" style="max-height: 80vh">
